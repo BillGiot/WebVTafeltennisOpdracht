@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
+
 @Component({
   selector: 'app-newsitem',
   templateUrl: './newsitem.component.html',
@@ -8,9 +9,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class NewsitemComponent implements OnInit {
 
+
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

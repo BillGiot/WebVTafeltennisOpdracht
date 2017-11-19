@@ -1,6 +1,8 @@
-<div class="col s12">
-  <app-newsitem></app-newsitem>
-  <app-newsitem></app-newsitem>
-
-  <app-player></app-player>
-  </div>
+ <div id = "item">
+    <div class="row" *ngFor="let newsitem of newsItems">
+      <img src = "assets/img.jpg" width="30px" height="30px"> 
+      <h2>{{newsitem.title}}</h2>
+        <p>{{newsitem.text}}</p>
+    </div>
+    <div class="divider"></div>
+  </div> 
