@@ -12,3 +12,13 @@ p{
     padding-bottom: 2%;
     background-color: #ececec;
 }
+
+#index-banner{
+    background-image: url("~/assets/img/img.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#index-banner h5{
+    color:white;
+}
