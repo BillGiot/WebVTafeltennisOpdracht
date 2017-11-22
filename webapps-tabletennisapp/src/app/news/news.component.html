@@ -1,20 +1,27 @@
- <div id="index-banner" class="parallax-container">
+<div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
       <h1 class="header center white-text text-darken-4">EXPERIENCE TABLE TENNIS</h1>
       <div class="row center">
         <h5 class="header col s12 light">Get the latest news, matches, live rankings and comments</h5>
       </div>
+        <br/>
+        <div class="row center">
+          <a href="#latestnews" class="btn btn-large">GET THE LATEST NEWS</a>
+        <br/>
+      </div>
     </div>
   </div>
 </div>
 
-<h5>Latest news</h5>
-<div class="row " *ngFor="let newsitem of newsItems">
-    <div class="col s12">
+<div class="row center">
+<h2 id="latestnews">LATEST UPDATES</h2>
+</div>
+<div class="row center">
+    <div class="col s6" *ngFor="let newsitem of newsItems">
       <div class="card card-panel hoverable">
         <div class="card-image">
-          <img src="assets/img/img.jpg" height="300px">
+          <img src="assets/img/img.jpg">
           <span class="card-title">{{newsitem.title}}</span>
         </div>
         <div class="card-content">
@@ -26,8 +33,6 @@
       </div>
     </div>
   </div>
-
-  <app-player></app-player>
   <!--
    <div id = "item">
     <div class="row" *ngFor="let newsitem of newsItems">

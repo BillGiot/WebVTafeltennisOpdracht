@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NewsDataService } from './news-data.service';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -15,13 +14,12 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   declarations: [
     AppComponent,
     MenuComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
-    BrowserModule,
     MaterializeModule,
+    BrowserModule,
     HttpModule,
-    ChartsModule,
     AppRoutingModule
   ],
 

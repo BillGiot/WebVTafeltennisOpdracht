@@ -12,6 +12,10 @@ import { SeriesComponent } from '../series/series.component';
 import { BlogComponent } from '../blog/blog.component';
 import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 import { LoginComponent } from '../login/login.component';
+import {SideBarComponent} from '../series/side-bar/side-bar.component';
+import { InternationalSeriesComponent } from '../series/international-series/international-series.component';
+import { NationalSeriesComponent } from '../series/national-series/national-series.component';
+import { RegionalComponent } from '../series/regional/regional.component';
 
 const appRoutes: Routes = [
     { path: 'news', component: NewsComponent },
@@ -31,7 +35,7 @@ const appRoutes: Routes = [
       RouterModule.forRoot(
         appRoutes
       ),
-      ChartsModule,
+      ChartsModule
     ],
     declarations: [
         NewsComponent,
@@ -40,7 +44,11 @@ const appRoutes: Routes = [
         SeriesComponent,
         BlogComponent,
         PagenotfoundComponent,
-        LoginComponent
+        LoginComponent,
+        SideBarComponent,
+        InternationalSeriesComponent,
+        NationalSeriesComponent,
+        RegionalComponent
     ],
     exports: [
       RouterModule
