@@ -4,9 +4,9 @@ import { RouterModule, Routes} from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { NewsDataService } from '../news-data.service';
+import { NewsDataService } from '../news/news-data.service';
 import { NewsComponent } from '../news/news.component';
-import { NewsitemComponent } from '../newsitem/newsitem.component';
+import { NewsDetailComponent} from '../news/news-detail/news-detail.component';
 import { PlayerComponent } from '../player/player.component';
 import { SeriesComponent } from '../series/series.component';
 import { BlogComponent } from '../blog/blog.component';
@@ -17,10 +17,12 @@ import { InternationalSeriesComponent } from '../series/international-series/int
 import { NationalSeriesComponent } from '../series/national-series/national-series.component';
 import { RegionalComponent } from '../series/regional/regional.component';
 
+
 const appRoutes: Routes = [
-    { path: 'news', component: NewsComponent },
+    { path: 'news', component: NewsComponent},
+    { path: 'news/newsitem/:id', component: NewsDetailComponent},
     { path: 'series', component: SeriesComponent },
-     {path: 'blog', component: BlogComponent},
+    {path: 'blog', component: BlogComponent},
     {path: 'login', component: LoginComponent},
     { path: '', redirectTo: 'news', pathMatch: 'full'},
     { path: '**', component: PagenotfoundComponent}
@@ -39,7 +41,7 @@ const appRoutes: Routes = [
     ],
     declarations: [
         NewsComponent,
-        NewsitemComponent,
+        NewsDetailComponent,
         PlayerComponent,
         SeriesComponent,
         BlogComponent,
@@ -48,11 +50,11 @@ const appRoutes: Routes = [
         SideBarComponent,
         InternationalSeriesComponent,
         NationalSeriesComponent,
-        RegionalComponent
+        RegionalComponent,
     ],
     exports: [
       RouterModule
     ],
     providers: [NewsDataService]
   })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -19,11 +19,27 @@ newsitem.save(function(err, rec){
   });
 });
 
-// catch 404
-/*app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});*/
+router.param('newsitem', function(req, res, next, id) {
+  let query = NewsItem.findById(id);
+  query.exec(function (err, newsitem){
+    if (err) { return next(err); }
+    if (!newsitem) { return next(new Error('not found ' + id)); }
+    req.newsitem = newsitem;
+    return next();
+  });
+}); 
+
+router.get('/API/news/newsitem/:newsitem', function(req, res) {
+  res.json(req.newsitem);
+});
+
+router.delete('/API/news/newsitem/:newsitem', function(req, res, next) {
+  req.newsitem.remove(function(err) {
+    if (err) { return next(err); }   
+    res.json("removed newsitem");
+  });
+})
+
+// 
 
 module.exports = router;

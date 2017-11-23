@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NewsItem } from '../newsitem/newsitem.model';
-import { NewsDataService } from '../news-data.service';
+import { NewsItem } from './newsitem.model';
+import { NewsDataService } from './news-data.service';
 
 @Component({
   selector: 'app-news',
@@ -15,14 +15,17 @@ export class NewsComponent implements OnInit {
   constructor(private dataService: NewsDataService) { }
 
   ngOnInit() {
-    this.dataService.newsItems().subscribe(items => { 
-      console.log(items);
-      this._newsItems = items; 
+    this.dataService.newsItems().subscribe(items => {
+      this._newsItems = items;
     });
   }
 
   get newsItems() {
     return this._newsItems;
   }
+
+  scroll(el) {
+    el.scrollIntoView();
+}
 
 }

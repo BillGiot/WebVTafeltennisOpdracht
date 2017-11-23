@@ -7,15 +7,15 @@
       </div>
         <br/>
         <div class="row center">
-          <a href="#latestnews" class="btn btn-large">GET THE LATEST NEWS</a>
+          <a (click)= "scroll(target)"class="btn btn-large">GET THE LATEST NEWS</a>
         <br/>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row center">
-<h2 id="latestnews">LATEST UPDATES</h2>
+<div class="row center" #target>
+<h2>LATEST UPDATES</h2>
 </div>
 <div class="row center">
     <div class="col s6" *ngFor="let newsitem of newsItems">
@@ -25,10 +25,10 @@
           <span class="card-title">{{newsitem.title}}</span>
         </div>
         <div class="card-content">
-          <p>{{newsitem.text}}</p>
+          <p>{{newsitem.description}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Lees meer</a>
+          <a [routerLink]="['./newsitem', newsitem.id]">Lees meer</a>
         </div>
       </div>
     </div>

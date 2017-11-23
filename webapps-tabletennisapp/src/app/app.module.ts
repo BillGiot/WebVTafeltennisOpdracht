@@ -3,18 +3,16 @@ import { MaterializeModule } from 'angular2-materialize';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { NewsDataService } from './news-data.service';
+import { NewsDataService } from './news/news-data.service';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     MaterializeModule,
