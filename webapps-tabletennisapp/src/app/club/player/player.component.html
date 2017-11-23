@@ -1,0 +1,33 @@
+<h2>Aantal tussenstops</h2>
+<div>
+  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+    [chartType]="barChartType"> </canvas>
+</div>
+
+<h2>Aantal km per vloot</h2>
+
+<div class="row">
+  <div class="col-md-6">
+    <canvas baseChart
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"></canvas>
+    </div>
+  </div>
+
+  <h2>Brandstof aandeel</h2>
+  <div>
+  <canvas baseChart
+  [data]="doughnutChartData"
+  [labels]="doughnutChartLabels"
+  [chartType]="doughnutChartType"
+  (chartHover)="chartHovered($event)"
+  (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<script src="node_modules/chart.js/Chart.min.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
