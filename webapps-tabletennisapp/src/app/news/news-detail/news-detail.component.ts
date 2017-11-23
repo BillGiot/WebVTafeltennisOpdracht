@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NewsDataService } from '../news-data.service';
+import { NewsDataService } from '../../tabletennis-data.service';
 import { NewsItem } from '../newsitem.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,7 +18,6 @@ export class NewsDetailComponent implements OnInit {
       this.dataService.newsItem(pa.get('id'))
         .subscribe(item => {
           this._newsItem = item;
-          console.log(item.id);
         }));
   }
   get newsItem() {

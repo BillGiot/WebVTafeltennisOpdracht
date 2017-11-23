@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-regional',
-  templateUrl: './regional.component.html',
-  styleUrls: ['./regional.component.css'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class RegionalComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   constructor() { }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { NewsItem } from './newsitem.model';
+import { NewsItem } from './news/newsitem.model';
 
 @Injectable()
 export class NewsDataService {

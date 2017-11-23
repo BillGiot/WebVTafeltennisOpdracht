@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NewsItem } from './newsitem.model';
-import { NewsDataService } from './news-data.service';
+import { NewsDataService } from '../tabletennis-data.service';
 
 @Component({
   selector: 'app-news',
