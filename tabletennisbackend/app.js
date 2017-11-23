@@ -8,6 +8,10 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/tabletennisdb',{useMongoClient:true});
 require('./models/NewsItem');
+require('./models/Club');
+require('./models/Match');
+require('./models/Player');
+require('./models/Team');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
