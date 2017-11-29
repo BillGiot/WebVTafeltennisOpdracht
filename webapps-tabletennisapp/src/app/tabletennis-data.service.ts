@@ -14,7 +14,6 @@ export class NewsDataService {
   newsItems(): Observable<NewsItem[]> {
     return this.http.get(this._appUrl + 'news').map(response =>
       response.json().map(item => {
-       // console.log(item._id);
         return new NewsItem(item._id, item.title, item.description, item.text);
       }
       )

@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddPostComponent } from './blog/add-post/add-post.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     MenuComponent,
     FooterComponent,
+    AddPostComponent,
   ],
   imports: [
     MaterializeModule,
