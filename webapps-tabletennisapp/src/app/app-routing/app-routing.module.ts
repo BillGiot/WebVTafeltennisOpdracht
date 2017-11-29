@@ -17,6 +17,8 @@ import { AuthGuardService } from '../user/auth-guard.service';
 import { UserComponent } from '../user/user.component';
 import { RegisterComponent } from '../user/register/register.component';
 import { AuthenticationService } from '../user/authentication.service';
+import { AddPostComponent } from '../blog/add-post/add-post.component';
+import { LogoutComponent } from '../user/logout/logout.component';
 
 
 const appRoutes: Routes = [
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
     { path: 'blog',  canActivate: [ AuthGuardService ], component: BlogComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
+    { path: 'logout', component: LogoutComponent},
     { path: '', redirectTo: 'news', pathMatch: 'full'},
     { path: '**', component: PagenotfoundComponent},
   ];
@@ -51,7 +54,9 @@ const appRoutes: Routes = [
         LoginComponent,
         MatchesComponent,
         AddNewsComponent,
-        RegisterComponent
+        RegisterComponent,
+        AddPostComponent,
+        LogoutComponent
     ],
     exports: [
       RouterModule

@@ -7,14 +7,20 @@
         <li><a routerLink="/news">News</a></li>
         <li><a routerLink="/series">Series</a></li>
         <li><a routerLink="/blog">Blog</a></li>
-        <li><a routerLink="/login">Log in</a></li>
-      </ul>
+        <li> <a *ngIf='(currentUser | async) else routelogin' class="item" routerLinkActive='active' routerLink="/logout">Welcome, {{currentUser|async}}</a></li>
+        <ng-template #routelogin>
+          <li> <a class="item" routerLinkActive='active' routerLink="/login">Log in</a> </li>
+         </ng-template>
+       </ul>
       
       <ul class="side-nav" id="mobile-demo">
         <li><a routerLink="/news"><i class="material-icons">explore</i>News</a></li>
         <li><a routerLink="/series"><i class="material-icons">show_chart</i>Series</a></li>
         <li><a routerLink="/blog"><i class="material-icons">people</i>Blog</a></li>
-        <li><a routerLink="/login"><i class="material-icons">search</i>Search</a></li>
+       <li> <a *ngIf='(currentUser | async) else routelogin' class="item" routerLinkActive='active' routerLink="/logout">Welcome, {{currentUser|async}}</a></li>
+       <ng-template #routelogin>
+         <li> <a class="item" routerLinkActive='active' routerLink="/login">Log in</a> </li>
+        </ng-template>
       </ul>
     </div>
   </nav>

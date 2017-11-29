@@ -8,15 +8,14 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AddPostComponent } from './blog/add-post/add-post.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    FooterComponent,
-    AddPostComponent,
+    FooterComponent
   ],
   imports: [
     MaterializeModule,

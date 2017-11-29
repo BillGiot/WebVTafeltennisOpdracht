@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AuthenticationService } from '../user/authentication.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-menu',
@@ -8,8 +10,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthenticationService ) {}
 
+  get currentUser(): Observable<String> {
+    console.log(this.authService.user$);
+    return this.authService.user$;
+  }
   ngOnInit() {
   }
 

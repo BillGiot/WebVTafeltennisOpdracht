@@ -5,7 +5,6 @@ let mongoose = require('mongoose');
 let NewsItem = mongoose.model('NewsItem');
 let Match = mongoose.model('Match');
 let Serie = mongoose.model('Serie');
-let Blog = mongoose.model('Blog');
 let Post = mongoose.model('Post');
 
 //Authorisatie 
@@ -97,44 +96,34 @@ router.post('/API/series/:serie/matches', function (req, res) {
 
 //blog
 router.get('/API/blog/', auth ,function (req, res, next) {
-  let query = Blog.find().populate('posts');
-  query.exec(function(err, blogs) {
-    if (err) return next(err);
-    res.json(blogs);
-  })
+  Post.find(function (err, blog) {
+    if (err) { return next(err); }
+    res.json(blog);
+  });
 });
 
-router.param('blog', function(req, res, next, id) {
-  let query = Blog.findById(id);
-  query.exec(function (err, blog){
+router.param('post', function(req, res, next, id) {
+  let query = Post.findById(id);
+  query.exec(function (err, post){
     if (err) { return next(err); }
-    if (!blog) { return next(new Error('not found ' + id)); }
-    req.blog = blog;
+    if (!post) { return next(new Error('not found ' + id)); }
+    req.post = post;
     return next();
   });
 });  
 
-router.get('/API/blog/:blog', auth ,function (req, res, next) {
-    req.blog.populate('posts', function(err, rec) {
-    if (err) return next(err);
+router.get('/API/blog/:post', auth ,function (req, res, next) {
+  res.json(req.post);
+});
+
+router.post('/API/blog/', auth ,function(req, res, next) {
+  let post = new Post(req.body);
+  post.save(function (err, rec) {
+    if (err) { return next(err); }
     res.json(rec);
   });
 });
 
-router.post('/API/blog/:blog/posts', auth ,function(req, res, next) {
-  let post = new Blog(req.body);
-
-  post.save(function(err, post) {
-    if (err) return next(err);
-
-    req.blog.posts.push(post);
-    req.blog.save(function(err, rec) {
-      if (err) return next(err);
-      res.json(post);
-    })
-  });
-});
 
 
-//blog
 module.exports = router;

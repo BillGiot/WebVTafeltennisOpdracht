@@ -10,7 +10,6 @@ mongoose.connect('mongodb://localhost/tabletennisdb',{useMongoClient:true});
 require('./models/NewsItem');
 require('./models/Match');
 require('./models/Serie');
-require('./models/Blog');
 require('./models/Post');
 require('./models/User')
 
@@ -25,7 +24,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-//id = 5a15b4bfded90202fe7bb93f
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

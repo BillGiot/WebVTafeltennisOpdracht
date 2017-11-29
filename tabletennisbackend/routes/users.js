@@ -33,7 +33,6 @@ router.post('/login', function(req, res, next){
 });
 
 router.post('/checkusername', function(req, res, next) {
-  // if (req.body.username) {
     User.find({username: req.body.username}, function(err, result) {
       if (result.length) {
         res.json({'username': 'alreadyexists'})
@@ -41,7 +40,6 @@ router.post('/checkusername', function(req, res, next) {
         res.json({'username': 'ok'})
       }
     });
-  // }
 });
 
 
