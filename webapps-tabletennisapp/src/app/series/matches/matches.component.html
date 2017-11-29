@@ -1,41 +1,24 @@
-<div class="col s9">
-<div class="row center">
-    <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Choose your option</option>
-          <option value="1">Week 1</option>
-          <option value="2">Week 2</option>
-          <option value="3">Week 3</option>
-        </select>
-        <label>Materialize Select</label>
-      </div>
-  <h4>Super devision</h4>
+
+<div class="row center col s9">
+  <h4>{{serie?.title}}</h4>
   <table class="centered highlight bordered responsive-table">
     <thead>
       <tr>
-          <th>Game</th>
-          <th>Home</th>
-          <th>Guests</th>
+          <th>Date</th>
+          <th>Player</th>
+          <th>Player</th>
           <th>Score</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr>
-        <td>201711251</td>
-        <td>Novo A</td>
-        <td>Logis A</td>
-        <td>8-8</td>
+      <tr  *ngFor="let match of serie?.matches">
+        <td>{{match?.date}}</td>
+        <td>{{match?.playerA}}</td>
+        <td>{{match?.playerB}}</td>
+        <td>{{match?.setsPlayerA}} - {{match?.setsPlayerB}} </td>
       </tr>
-
-      <tr>
-          <td>201711252</td>
-          <td>Rooigem Gent</td>
-          <td>Logis B</td>
-          <td>10-6</td>
-        </tr>
     </tbody>
   </table>
 
-</div>
 </div>

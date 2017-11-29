@@ -7,32 +7,28 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { NewsDataService } from '../tabletennis-data.service';
 import { NewsComponent } from '../news/news.component';
 import { NewsDetailComponent} from '../news/news-detail/news-detail.component';
-import { PlayerComponent } from '../club/player/player.component';
 import { SeriesComponent } from '../series/series.component';
 import { BlogComponent } from '../blog/blog.component';
 import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
-import { LoginComponent } from '../login/login.component';
-import {SideBarComponent} from '../series/side-bar/side-bar.component';
-import { RankingComponent } from '../series/ranking/ranking.component';
+import { LoginComponent } from '../user/login/login.component';
 import { MatchesComponent } from '../series/matches/matches.component';
-import { SearchComponent } from '../series/search/search.component';
-import { ClubComponent } from '../club/club.component';
-import { TeamComponent } from '../club/team/team.component';
+import { AddNewsComponent } from '../news/add-news/add-news.component';
+import { AuthGuardService } from '../user/auth-guard.service';
+import { UserComponent } from '../user/user.component';
+import { RegisterComponent } from '../user/register/register.component';
+import { AuthenticationService } from '../user/authentication.service';
+
 
 const appRoutes: Routes = [
     { path: 'news', component: NewsComponent},
-    { path: 'news/newsitem/:id', component: NewsDetailComponent},
-    { path: 'series', component: SeriesComponent ,
-      children : [
-        { path: '', redirectTo: 'matches', pathMatch: 'full'},
-        { path: 'ranking', component: RankingComponent },
-        { path: 'matches', component: MatchesComponent}
-    ]
-},
-    {path: 'blog', component: BlogComponent},
-    {path: 'login', component: LoginComponent},
+    { path: 'news/:id', component: NewsDetailComponent},
+    { path: 'series', component: SeriesComponent },
+    { path: 'series/:id', component: MatchesComponent },
+    { path: 'blog',  canActivate: [ AuthGuardService ], component: BlogComponent},
+    { path: 'login', component: LoginComponent},
+    { path: 'register', component: RegisterComponent},
     { path: '', redirectTo: 'news', pathMatch: 'full'},
-    { path: '**', component: PagenotfoundComponent}
+    { path: '**', component: PagenotfoundComponent},
   ];
 
   @NgModule({
@@ -49,21 +45,21 @@ const appRoutes: Routes = [
     declarations: [
         NewsComponent,
         NewsDetailComponent,
-        PlayerComponent,
         SeriesComponent,
         BlogComponent,
         PagenotfoundComponent,
         LoginComponent,
-        SideBarComponent,
-        RankingComponent,
         MatchesComponent,
-        SearchComponent,
-        ClubComponent,
-        TeamComponent,
+        AddNewsComponent,
+        RegisterComponent
     ],
     exports: [
       RouterModule
     ],
-    providers: [NewsDataService]
+    providers: [
+    NewsDataService,
+    AuthenticationService,
+    AuthGuardService
+]
   })
 export class AppRoutingModule {}

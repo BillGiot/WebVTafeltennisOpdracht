@@ -1,0 +1,28 @@
+<div class = "container">
+  <form class="card-content col s12" [formGroup]='user' (ngSubmit)='onSubmit()'>
+
+    <div class="row">
+      <h4>Log in</h4>
+    </div>
+
+ <div class="row">
+ <input class="input col s2" type="text" class="validate" formClassName="username">
+    <label>Username</label>
+ </div>     
+
+ <div class="row">
+    <input class="input col s2"  type="password" class="validate" formClassName="username">
+    <label>Password</label>
+  </div>
+
+
+    <div class="row">
+      <button  type='submit' class="waves-effect waves-light btn" >Login</button> 
+    </div>
+    </form>
+
+
+    <div class="row">
+      <a class='item' routerLink="/register" >Or register</a>
+    </div>
+</div>

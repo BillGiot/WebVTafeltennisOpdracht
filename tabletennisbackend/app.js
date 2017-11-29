@@ -8,10 +8,17 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/tabletennisdb',{useMongoClient:true});
 require('./models/NewsItem');
-require('./models/Club');
 require('./models/Match');
-require('./models/Player');
-require('./models/Team');
+require('./models/Serie');
+require('./models/Blog');
+require('./models/Post');
+require('./models/User')
+
+//authorisatie
+let passport = require('passport');
+
+require('./config/passport');
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -30,9 +37,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/API/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

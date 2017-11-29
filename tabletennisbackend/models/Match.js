@@ -1,14 +1,12 @@
 var mongoose = require('mongoose');
 
-var MatchSchema = new Mongoose.MatchSchema({
- date: Date,
- week: {type: Number, default: 1},
- home: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'},
- visitors: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'},
- pointsHome: {type: Number, default: 0},
- pointsHome: {type: Number, default: 0}
-
+var MatchSchema = new mongoose.Schema({
+    date: Date,
+    playerA: String,
+    playerB: String,
+    setsPlayerA: {type: Number, default: 0},
+    setsPlayerB: {type: Number, default: 0}
 });
 
-mongoose.model('Match', MatchSchema);
 
+mongoose.model('Match', MatchSchema);

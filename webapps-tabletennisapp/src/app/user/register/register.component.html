@@ -1,0 +1,28 @@
+<div class = "container">
+  <form [formGroup]='user' (ngSubmit)='onSubmit()' class="card-content">
+<div class ="row">
+  <h3>Register</h3>
+</div>
+
+<div class = "row">
+   <label>Username</label>
+    <input id="username" class="input col s2" type="text" class="validate" formControlName='username'> 
+  </div>
+
+  <div formGroupName='passwordGroup'>
+  <div class="row">
+    <label>Password</label>
+    <input id = "password" class="input col s2" type="password" class="validate" formControlName='password'>
+  </div>
+
+    <div class = "row">
+      <label>Confirm password</label>
+      <input id= "confirmPassword" class="input col s2" type="password" class="validate" formControlName='confirmPassword'>
+    </div>
+</div>
+    <div class = "row">
+    <button type='submit' class="waves-effect waves-light btn">Register</button>
+  </div>
+    </form>
+</div>
+
