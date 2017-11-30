@@ -13,7 +13,6 @@ export class MenuComponent implements OnInit {
   constructor(private authService: AuthenticationService ) {}
 
   get currentUser(): Observable<String> {
-    console.log(this.authService.user$);
     return this.authService.user$;
   }
   ngOnInit() {

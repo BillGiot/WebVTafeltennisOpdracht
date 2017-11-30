@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { NewsDataService } from '../../tabletennis-data.service';
+import { SerieService } from '../../series/serie.service';
 import { ActivatedRoute } from '@angular/router';
 import { Serie } from '../serie.model';
 
@@ -12,17 +12,10 @@ import { Serie } from '../serie.model';
 export class MatchesComponent implements OnInit {
   @Input() public serie: Serie;
 
-  constructor(private route: ActivatedRoute, private dataService: NewsDataService) {}
+  constructor(private route: ActivatedRoute, private dataService: SerieService) {}
 
   ngOnInit() {
-    /*this.route.paramMap.subscribe(pa =>
-      this.dataService.serie(pa.get('id'))
-        .subscribe(item => {
-          this._serie = item;
-        }));*/
   }
 
-  /*get serie(){
-    return this._serie;
-  }*/
+
 }

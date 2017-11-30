@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from '../user/authentication.service';
-import { NewsDataService } from '../tabletennis-data.service';
+import { BlogService } from './blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -10,11 +10,22 @@ import { NewsDataService } from '../tabletennis-data.service';
 })
 export class BlogComponent implements OnInit {
   private user;
-  private posts;
+  private _posts;
 
-  constructor(private autservice: AuthenticationService, private service: NewsDataService) { }
+  constructor(private autservice: AuthenticationService, private dataService: BlogService) { }
 
   ngOnInit() {
+    this.dataService.posts().subscribe(items => {
+      this._posts = items;
+    });
+  }
+
+  get posts(){
+    return this._posts;
+  }
+
+  addPost(post) {
+    this._posts.push(post);
   }
 
 }

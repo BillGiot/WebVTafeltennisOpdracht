@@ -1,3 +1,18 @@
-<p>
-  add-post works!
-</p>
+<div class="row">
+  <form [formGroup]='post' (ngSubmit)='onSubmit()'>
+    <div class="row" id="inputForm">
+      <div class="chip">
+        <i class="material-icons">account_circle</i> <span id="icontext">{{currentUser|async}}</span>
+      </div>
+      <div class="input-field">
+        
+        <textarea id="text" class="materialize-textarea"  formControlName="text" ></textarea>
+        <label for="textarea1">Post</label>
+
+        <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

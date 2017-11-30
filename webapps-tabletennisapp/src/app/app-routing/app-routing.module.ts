@@ -4,7 +4,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { NewsDataService } from '../tabletennis-data.service';
+import { NewsDataService } from '../news/news-data.service';
 import { NewsComponent } from '../news/news.component';
 import { NewsDetailComponent} from '../news/news-detail/news-detail.component';
 import { SeriesComponent } from '../series/series.component';
@@ -19,6 +19,8 @@ import { RegisterComponent } from '../user/register/register.component';
 import { AuthenticationService } from '../user/authentication.service';
 import { AddPostComponent } from '../blog/add-post/add-post.component';
 import { LogoutComponent } from '../user/logout/logout.component';
+import { SerieService } from '../series/serie.service';
+import { BlogService } from '../blog/blog.service';
 
 
 const appRoutes: Routes = [
@@ -63,6 +65,8 @@ const appRoutes: Routes = [
     ],
     providers: [
     NewsDataService,
+    SerieService,
+    BlogService,
     AuthenticationService,
     AuthGuardService
 ]

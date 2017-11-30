@@ -1,16 +1,39 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AuthenticationService } from '../../user/authentication.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Post} from '../post.model';
+import { BlogService } from '../blog.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent implements OnInit {
-
-  constructor() { }
+  public post: FormGroup;
+  @Output() public postAdded = new EventEmitter<Post>();
+  constructor(private dataService: BlogService, private authService: AuthenticationService, private fb: FormBuilder ) { }
 
   ngOnInit() {
+    this.post = this.fb.group({
+      text: ['', Validators.required]
+    });
   }
 
+  get currentUser(): Observable<String> {
+    return this.authService.user$;
+  }
+    onSubmit() {
+      const currentDate = new Date();
+      const currentUser = this.authService.user$.value;
+      const text =  this.post.value.text;
+
+      const newPost =   new Post(currentDate, currentUser, text);
+      this.dataService.addPost(newPost).subscribe(item => {
+        this.postAdded.emit(item);
+        this.post.get("text").setValue("");
+      });
+  }
 }

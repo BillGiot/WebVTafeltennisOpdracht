@@ -1,24 +1,23 @@
+
+
 <div class="container">
+  <h2>Blog feet</h2>
+<h5>Post your comments below:</h5>
+<app-add-post (postAdded)='addPost($event)'></app-add-post> 
 
-<h2>Blog feet</h2>
-<div class="row s8">
-    <form >
-      <div class="row">
-            <div class="chip">
-                    <i class="material-icons" >account_circle</i>
-                    {{user.username}}
-                  </div>
-        <div class="input-field">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Post</label>
-
-          <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-              </button>
+<div class="container">
+  <h5>What others commented:</h5>
+<hr/>
+<div  *ngFor="let post of posts" class = "row">
+          <div id="sectionPost" class="chip">
+            <i class="material-icons">account_circle</i>  <span id="icontext">{{post.user}}</span>
+          </div>
+          <p>{{post.text}}</p>
+          <p><span id = "postDate"> Posted on {{post.date | date}} </span> </p>
+          <div class="divider"></div>
         </div>
-      </div>
-    </form>
-  </div>
+       
+</div>
 </div>
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NewsDataService } from '../../tabletennis-data.service';
+import { NewsDataService } from '../news-data.service';
 import { NewsItem } from '../newsitem.model';
 import { ActivatedRoute } from '@angular/router';
 

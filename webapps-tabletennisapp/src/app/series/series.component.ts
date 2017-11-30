@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Serie } from './serie.model';
-import { NewsDataService } from '../tabletennis-data.service';
+import { SerieService } from '../series/serie.service';
 
 @Component({
   selector: 'app-series',
@@ -11,11 +11,12 @@ import { NewsDataService } from '../tabletennis-data.service';
 export class SeriesComponent implements OnInit {
   public serie: Serie;
   private _series: Serie[];
-  constructor(private dataService: NewsDataService) { }
+  constructor(private dataService: SerieService) { }
 
   ngOnInit() {
     this.dataService.series().subscribe(items => {
       this._series = items;
+      this.serie = items[0];
     });
   }
 

@@ -13,7 +13,7 @@
 
     <tbody>
       <tr  *ngFor="let match of serie?.matches">
-        <td>{{match?.date}}</td>
+        <td>{{match?.date | date}}</td>
         <td>{{match?.playerA}}</td>
         <td>{{match?.playerB}}</td>
         <td>{{match?.setsPlayerA}} - {{match?.setsPlayerB}} </td>
