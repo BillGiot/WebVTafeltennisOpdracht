@@ -112,15 +112,21 @@ router.param('post', function(req, res, next, id) {
   });
 });  
 
-router.get('/API/blog/:post', auth ,function (req, res, next) {
-  res.json(req.post);
-});
-
 router.post('/API/blog/', auth ,function(req, res, next) {
+  if(!req.body.text){
+    return res.status(400).json({message: 'Please fill in the form'});
+  }
   let post = new Post(req.body);
   post.save(function (err, rec) {
     if (err) { return next(err); }
     res.json(rec);
+  });
+});
+
+router.delete('/API/blog/:post', auth, function (req, res, next) {
+  req.post.remove(function (err) {
+    if (err) { return next(err); }
+    res.json(req.post);
   });
 });
 

@@ -15,6 +15,9 @@ constructor(date: Date, user: String, text: String) {
     this._text = text;
 }
 
+get id(){
+    return this._id;
+}
 get date() {
     return this._date;
 }

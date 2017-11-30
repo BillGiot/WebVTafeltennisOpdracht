@@ -8,10 +8,14 @@
         
         <textarea id="text" class="materialize-textarea"  formControlName="text" ></textarea>
         <label for="textarea1">Post</label>
+        <div *ngIf='errorMsg' id="error">{{errorMsg}}</div>
+        <div id="error" *ngIf= 'post.get("text").errors?.minlength && post.get("text").touched'>Minimum length of your message is 20 characters</div>
 
         <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
         </button>
+
+      
       </div>
     </div>
   </form>
