@@ -74,11 +74,5 @@ export class AuthenticationService {
     });
   }
 
- /* isAdmin() {
-    if ( !localStorage.getItem('currentUser')) {
-      return false;
-    }
-    return JSON.parse(localStorage.getItem('currentUser')).admin;
-  }*/
 
 }

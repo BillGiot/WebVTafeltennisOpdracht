@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/tabletennisdb',{useMongoClient:true});
+mongoose.connect('tabletennisdb',{useMongoClient:true});
 require('./models/NewsItem');
 require('./models/Match');
 require('./models/Serie');
