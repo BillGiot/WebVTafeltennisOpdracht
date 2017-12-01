@@ -20,6 +20,7 @@ router.get('/API/news/', function (req, res, next) {
 });
 
 router.post('/API/news/', auth ,function (req, res, next) {
+  console.log(req.body);
   let newsitem = new NewsItem(req.body);
   newsitem.save(function (err, rec) {
     if (err) { return next(err); }

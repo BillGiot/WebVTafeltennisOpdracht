@@ -5,15 +5,15 @@ export class NewsItem {
     private _text: String;
 
     static fromJSON(json): NewsItem {
-        const rec = new NewsItem(json.id, json.title, json.description, json.text);
-        rec._id = json._id;
+        const rec = new NewsItem(json.title, json.description, json.text, json._id);
         return rec;
     }
     constructor( title: String, description: String, text: String, id?: String) {
-        this._id = id;
         this._title = title;
         this._text = text;
         this._description = description;
+
+       this._id = id;
     }
 
     get id(){

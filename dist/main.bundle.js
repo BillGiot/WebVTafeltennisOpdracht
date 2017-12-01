@@ -270,7 +270,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/blog/add-post/add-post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <form [formGroup]='post' (ngSubmit)='onSubmit()'>\n    <div class=\"row\" id=\"inputForm\">\n      <div class=\"chip\">\n        <i class=\"material-icons\">account_circle</i> <span id=\"icontext\">{{currentUser|async}}</span>\n      </div>\n      <div class=\"input-field\">\n        \n        <textarea id=\"text\" class=\"materialize-textarea\"  formControlName=\"text\" ></textarea>\n        <label for=\"text\">Post</label>\n        <div *ngIf='errorMsg' id=\"error\">{{errorMsg}}</div>\n        <div id=\"error\" *ngIf= 'post.get(\"text\").errors?.minlength && post.get(\"text\").touched'>Minimum length of your message is 20 characters</div>\n\n        <button class=\"btn waves-effect waves-light right\" type=\"submit\" name=\"action\">Submit\n          <i class=\"material-icons right\">send</i>\n        </button>\n\n      \n      </div>\n    </div>\n  </form>\n</div>"
+module.exports = "<div class=\"row\">\n  <form [formGroup]='post' (ngSubmit)='onSubmit()'>\n    <div class=\"row\" id=\"inputForm\">\n      <div class=\"chip\">\n        <i class=\"material-icons\">account_circle</i> <span id=\"icontext\">{{currentUser|async}}</span>\n      </div>\n      <div class=\"input-field\">\n        \n        <textarea id=\"text\" class=\"materialize-textarea\"  formControlName=\"text\" ></textarea>\n        <label for=\"text\">Post</label>\n        <div *ngIf='errorMsg' id=\"error\">{{errorMsg}}</div>\n        <div id=\"error\" *ngIf= 'post.get(\"text\").errors?.minlength && post.get(\"text\").touched'>Minimum length of your message is 20 characters</div>\n\n        <button [disabled]=\"!post.valid\" class=\"btn waves-effect waves-light right\" type=\"submit\" name=\"action\">Submit\n          <i class=\"material-icons right\">send</i>\n        </button>\n\n      \n      </div>\n    </div>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -474,7 +474,7 @@ var BlogService = (function () {
     function BlogService(http, auth) {
         this.http = http;
         this.auth = auth;
-        this._appUrl = 'http://localhost:4200/API/';
+        this._appUrl = '/API/';
     }
     BlogService.prototype.posts = function () {
         return this.http.get(this._appUrl + "blog/", { headers: new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ Authorization: "Bearer " + this.auth.token }) })
@@ -759,10 +759,13 @@ var AddNewsComponent = (function () {
     AddNewsComponent.prototype.onSubmit = function () {
         var _this = this;
         var title = this.newsItem.value.title;
-        var text = this.newsItem.value.text;
         var description = this.newsItem.value.description;
-        var newItem = new __WEBPACK_IMPORTED_MODULE_1__newsitem_model__["a" /* NewsItem */]('', title, description, text);
+        var text = this.newsItem.value.text;
+        console.log("Submit");
+        var newItem = new __WEBPACK_IMPORTED_MODULE_1__newsitem_model__["a" /* NewsItem */](title, description, text);
+        console.log("Newsitem" + newItem);
         this.dataService.addNewsItem(newItem).subscribe(function (item) {
+            //console.log(newItem);
             _this.newsAdded.emit(item);
         });
     };
@@ -814,22 +817,24 @@ var NewsDataService = (function () {
     function NewsDataService(auth, http) {
         this.auth = auth;
         this.http = http;
-        this._appUrl = 'http://localhost:4200/API/';
+        this._appUrl = '/API/';
     }
     NewsDataService.prototype.newsItems = function () {
         return this.http.get(this._appUrl + 'news').map(function (response) {
             return response.json().map(function (item) {
-                return new __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */](item._id, item.title, item.description, item.text);
+                return new __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */](item.title, item.description, item.text, item.id);
             });
         });
     };
     NewsDataService.prototype.newsItem = function (id) {
         return this.http.get(this._appUrl + "news/" + id)
             .map(function (response) { return response.json(); }).map(function (item) {
+            console.log(item);
             return __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */].fromJSON(item);
         });
     };
     NewsDataService.prototype.addNewsItem = function (rec) {
+        console.log(rec.id);
         return this.http.post(this._appUrl + "news/", rec, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ Authorization: "Bearer " + this.auth.token }) })
             .map(function (response) { return response.json(); })
             .map(function (item) { return __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */].fromJSON(item); });
@@ -950,7 +955,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/news/news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <h1 class=\"header center white-text text-darken-4\">EXPERIENCE TABLE TENNIS</h1>\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">Get the latest news, matches, live rankings and comments</h5>\n      </div>\n        <br/>\n        <div class=\"row center\">\n          <a (click)= \"scroll(target)\"class=\"btn btn-large\">GET THE LATEST NEWS</a>\n        <br/>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row center\" #target>\n<h2>LATEST UPDATES</h2>\n</div>\n<div class=\"row center\">\n    <div class=\"col s6\" *ngFor=\"let newsitem of newsItems\">\n      <div class=\"card card-panel hoverable\">\n        <div class=\"card-image\">\n          <img src=\"assets/img/img.jpg\">\n          <span class=\"card-title\">{{newsitem.title}}</span>\n        </div>\n        <div class=\"card-content\">\n          <p>{{newsitem.description}}</p>\n        </div>\n        <div class=\"card-action\">\n          <a [routerLink]=\"['./', newsitem.id]\">Read more</a>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row center\">\n\n   <app-add-news (newsAdded) = \"addNewsItem($event)\">\n   </app-add-news>\n  </div>\n  <!--\n   <div id = \"item\">\n    <div class=\"row\" *ngFor=\"let newsitem of newsItems\">\n      <h2>{{newsitem.title}}</h2>\n        <p>{{newsitem.text}}</p>\n    </div>\n    <div class=\"divider\"></div>\n  </div> -->\n"
+module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <h1 class=\"header center white-text text-darken-4\">EXPERIENCE TABLE TENNIS</h1>\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">Get the latest news, matches, live rankings and comments</h5>\n      </div>\n        <br/>\n        <div class=\"row center\">\n          <a (click)= \"scroll(target)\"class=\"btn btn-large\">GET THE LATEST NEWS</a>\n        <br/>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row center\" #target>\n<h2>LATEST UPDATES</h2>\n</div>\n<div class=\"row center\">\n    <div class=\"col s6\" *ngFor=\"let newsitem of newsItems\">\n      <div class=\"card card-panel hoverable\">\n        <div class=\"card-image\">\n          <img src=\"assets/img/img.jpg\">\n          <span class=\"card-title\">{{newsitem.title}}</span>\n        </div>\n        <div class=\"card-content\">\n          <p>{{newsitem.description}}</p>\n        </div>\n        <div class=\"card-action\">\n          <a [routerLink]=\"['./', newsitem?.id]\">Read more</a>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row center\">\n\n   <app-add-news (newsAdded) = \"addNewsItem($event)\">\n   </app-add-news>\n  </div>\n  <!--\n   <div id = \"item\">\n    <div class=\"row\" *ngFor=\"let newsitem of newsItems\">\n      <h2>{{newsitem.title}}</h2>\n        <p>{{newsitem.text}}</p>\n    </div>\n    <div class=\"divider\"></div>\n  </div> -->\n"
 
 /***/ }),
 
@@ -980,6 +985,7 @@ var NewsComponent = (function () {
         var _this = this;
         this.dataService.newsItems().subscribe(function (items) {
             _this._newsItems = items;
+            console.log(items);
         });
     };
     Object.defineProperty(NewsComponent.prototype, "newsItems", {
@@ -1019,14 +1025,13 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsItem; });
 var NewsItem = (function () {
     function NewsItem(title, description, text, id) {
-        this._id = id;
         this._title = title;
         this._text = text;
         this._description = description;
+        this._id = id;
     }
     NewsItem.fromJSON = function (json) {
-        var rec = new NewsItem(json.id, json.title, json.description, json.text);
-        rec._id = json._id;
+        var rec = new NewsItem(json.title, json.description, json.text, json._id);
         return rec;
     };
     Object.defineProperty(NewsItem.prototype, "id", {
@@ -1284,7 +1289,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SerieService = (function () {
     function SerieService(http) {
         this.http = http;
-        this._appUrl = 'http://localhost:4200/API/';
+        this._appUrl = '/API/';
     }
     SerieService.prototype.series = function () {
         return this.http.get(this._appUrl + "series/").map(function (response) { return response.json().map(function (item) { return __WEBPACK_IMPORTED_MODULE_3__serie_model__["a" /* Serie */].fromJSON(item); }); });

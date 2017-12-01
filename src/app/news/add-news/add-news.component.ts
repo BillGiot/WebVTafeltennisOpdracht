@@ -27,11 +27,14 @@ export class AddNewsComponent implements OnInit {
 
   onSubmit() {
     const title = this.newsItem.value.title;
-    const text = this.newsItem.value.text;
     const description = this.newsItem.value.description;
+    const text = this.newsItem.value.text;
 
-    const newItem = new NewsItem('', title, description, text);
+    console.log("Submit");
+    const newItem = new NewsItem(title, description, text);
+    console.log("Newsitem" + newItem);
     this.dataService.addNewsItem(newItem).subscribe(item => {
+      //console.log(newItem);
       this.newsAdded.emit(item);
     });
   }

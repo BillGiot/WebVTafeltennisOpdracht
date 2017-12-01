@@ -14,7 +14,7 @@ export class NewsDataService {
   newsItems(): Observable<NewsItem[]> {
     return this.http.get(this._appUrl + 'news').map(response =>
       response.json().map(item => {
-        return new NewsItem(item._id, item.title, item.description, item.text);
+        return new NewsItem(item.title, item.description, item.text, item.id);
       }
       )
     );
@@ -23,12 +23,14 @@ export class NewsDataService {
   newsItem(id): Observable<NewsItem> {
     return this.http.get(`${this._appUrl}news/${id}`)
       .map(response => response.json()).map(item => {
+        console.log(item);
        return NewsItem.fromJSON(item);
       }
     );
   }
 
   addNewsItem(rec): Observable<NewsItem> {
+    console.log(rec.id);
     return this.http.post(`${this._appUrl}news/`, rec, { headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
     .map(response => response.json())
     .map(item => NewsItem.fromJSON(item));
