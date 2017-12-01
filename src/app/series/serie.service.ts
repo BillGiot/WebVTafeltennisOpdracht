@@ -6,7 +6,7 @@ import { Serie } from './serie.model';
 
 @Injectable()
 export class SerieService {
-  private _appUrl = 'https://vast-cove-95623.herokuapp.com/API/';
+  private _appUrl = '/API/';
 
     constructor(private http: Http) { }
 
