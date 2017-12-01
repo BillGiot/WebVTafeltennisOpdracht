@@ -8,7 +8,7 @@ import { AuthenticationService } from '../user/authentication.service';
 
 @Injectable()
 export class BlogService {
-  private _appUrl = 'http://localhost:4200/API/';
+  private _appUrl = 'https://vast-cove-95623.herokuapp.com/API/';
     constructor(private http: Http, private auth: AuthenticationService) { }
 
     posts(): Observable<Post[]> {

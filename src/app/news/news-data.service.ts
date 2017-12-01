@@ -7,7 +7,7 @@ import { AuthenticationService } from '../user/authentication.service';
 
 @Injectable()
 export class NewsDataService {
-  private _appUrl = 'http://localhost:4200/API/';
+  private _appUrl = 'https://vast-cove-95623.herokuapp.com/API/';
 
   constructor(private auth: AuthenticationService, private http: Http) { }
 
