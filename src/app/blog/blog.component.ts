@@ -34,7 +34,7 @@ export class BlogComponent implements OnInit {
   }
 
   isCurrentUser(username) {
-      return JSON.parse(localStorage.getItem('currentUser')).username === this.autservice.user$.value;
+      return JSON.parse(localStorage.getItem('currentUser')).username !== this.autservice.user$.value;
   }
 
   removePost(post: Post) {
