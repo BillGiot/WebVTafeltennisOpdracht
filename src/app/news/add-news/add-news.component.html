@@ -5,16 +5,25 @@
       <div class="input-field">
       <input  placeholder= "What's your title?" class="active" id="title" type="text" formControlName="title">
       <label  for="title">Title:</label>
+      <div id="error" *ngIf= 'newsItem.get("title").errors?.required && newsItem.get("title").touched'>
+        Please fill in a title...
+      </div>
     </div>
 
       <div class="input-field">
       <textarea placeholder= "Give your short description..." class="active" id="description" type="text" formControlName="description"></textarea>
       <label for="description">Description:</label>
+      <div id="error" *ngIf=' newsItem.get("description").errors?.required && newsItem.get("description").touched'>
+        Please fill in the description...
+      </div>
     </div>
 
       <div class="input-field">
       <textarea  placeholder= "Write your article..." class="active" id="text" type="text" formControlName="text"></textarea>
       <label for="text">Text:</label>
+      <div id="error" *ngIf=' newsItem.get("text").errors?.minlength && newsItem.get("text").touched'>
+        password too short, please use at least {{passwordControl.errors?.passwordTooShort.requiredLength}} letters (got {{passwordControl.errors?.passwordTooShort.actualLength}})
+      </div>
     </div>
 
       <div class="row">

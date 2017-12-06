@@ -203,12 +203,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__series_serie_service__ = __webpack_require__("../../../../../src/app/series/serie.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blog_blog_service__ = __webpack_require__("../../../../../src/app/blog/blog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__series_add_match_add_match_component__ = __webpack_require__("../../../../../src/app/series/add-match/add-match.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -231,7 +233,8 @@ AppModule = __decorate([
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_6__menu_menu_component__["a" /* MenuComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__footer_footer_component__["a" /* FooterComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__footer_footer_component__["a" /* FooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__series_add_match_add_match_component__["a" /* AddMatchComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1_angular2_materialize__["a" /* MaterializeModule */],
@@ -582,7 +585,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"page-footer light-blue darken-4\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col l6 s12\">\n        <h5 class=\"white-text\">VTTL</h5>\n        <p class=\"grey-text text-lighten-4\">You can use rows and columns here to organize your footer content.</p>\n      </div>\n      <div class=\"col l4 offset-l2 s12\">\n        <h5 class=\"white-text\">Links</h5>\n        <ul>\n          <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Visit our website</a></li>\n          <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Partners</a></li>\n          <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Contact us</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <div class=\"footer-copyright blue-grey darken-4\" >\n    <div class=\"container\">\n    © 2017 Copyright Stijn De Brauwer\n    <a class=\"grey-text text-lighten-4 right\" href=\"#!\">More Links</a>\n    </div>\n  </div>\n</footer>"
+module.exports = "<footer class=\"page-footer light-blue darken-4\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col l6 s12\">\n        <h5 class=\"white-text\">VTTL</h5>\n        <p class=\"grey-text text-lighten-4\">Your table tennis platform! </p>\n      </div>\n      <div class=\"col l4 offset-l2 s12\">\n        <h5 class=\"white-text\">Links</h5>\n        <ul>\n          <li><a class=\"grey-text text-lighten-3\" href=\"https://www.vttl.be/\" target=\"_blank\">Visit the official website</a></li>\n          <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Contact us</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <div class=\"footer-copyright blue-grey darken-4\" >\n    <div class=\"container\">\n    © 2017 Copyright Stijn De Brauwer\n    <a class=\"grey-text text-lighten-4 right\" href=\"#!\">More Links</a>\n    </div>\n  </div>\n</footer>"
 
 /***/ }),
 
@@ -704,7 +707,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#addNews{\n    border: solid 1px #e9e9e9;\n    padding: 3%;\n}\n\n.input-field{\n    margin-top: 5% !important;\n}", ""]);
+exports.push([module.i, "#addNews{\n    border: solid 1px #e9e9e9;\n    padding: 3%;\n}\n\n.input-field{\n    margin-top: 5% !important;\n}\n\n#error{\n    color: red !important;\n}", ""]);
 
 // exports
 
@@ -717,7 +720,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/news/add-news/add-news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class= \"container\">\n  <h4>Add your news:</h4>\n  <div id=\"addNews\" class=\"row\">\n    <form  [formGroup]='newsItem' (ngSubmit)='onSubmit()'>\n      <div class=\"input-field\">\n      <input  placeholder= \"What's your title?\" class=\"active\" id=\"title\" type=\"text\" formControlName=\"title\">\n      <label  for=\"title\">Title:</label>\n    </div>\n\n      <div class=\"input-field\">\n      <textarea placeholder= \"Give your short description...\" class=\"active\" id=\"description\" type=\"text\" formControlName=\"description\"></textarea>\n      <label for=\"description\">Description:</label>\n    </div>\n\n      <div class=\"input-field\">\n      <textarea  placeholder= \"Write your article...\" class=\"active\" id=\"text\" type=\"text\" formControlName=\"text\"></textarea>\n      <label for=\"text\">Text:</label>\n    </div>\n\n      <div class=\"row\">\n      <button class = \"btn waves-effect waves-light\" type =\"submit\">Submit</button>\n    </div>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class= \"container\">\n  <h4>Add your news:</h4>\n  <div id=\"addNews\" class=\"row\">\n    <form  [formGroup]='newsItem' (ngSubmit)='onSubmit()'>\n      <div class=\"input-field\">\n      <input  placeholder= \"What's your title?\" class=\"active\" id=\"title\" type=\"text\" formControlName=\"title\">\n      <label  for=\"title\">Title:</label>\n      <div id=\"error\" *ngIf= 'newsItem.get(\"title\").errors?.required && newsItem.get(\"title\").touched'>\n        Please fill in a title...\n      </div>\n    </div>\n\n      <div class=\"input-field\">\n      <textarea placeholder= \"Give your short description...\" class=\"active\" id=\"description\" type=\"text\" formControlName=\"description\"></textarea>\n      <label for=\"description\">Description:</label>\n      <div id=\"error\" *ngIf=' newsItem.get(\"description\").errors?.required && newsItem.get(\"description\").touched'>\n        Please fill in the description...\n      </div>\n    </div>\n\n      <div class=\"input-field\">\n      <textarea  placeholder= \"Write your article...\" class=\"active\" id=\"text\" type=\"text\" formControlName=\"text\"></textarea>\n      <label for=\"text\">Text:</label>\n      <div id=\"error\" *ngIf=' newsItem.get(\"text\").errors?.minlength && newsItem.get(\"text\").touched'>\n        password too short, please use at least {{passwordControl.errors?.passwordTooShort.requiredLength}} letters (got {{passwordControl.errors?.passwordTooShort.actualLength}})\n      </div>\n    </div>\n\n      <div class=\"row\">\n      <button class = \"btn waves-effect waves-light\" type =\"submit\">Submit</button>\n    </div>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -761,11 +764,8 @@ var AddNewsComponent = (function () {
         var title = this.newsItem.value.title;
         var description = this.newsItem.value.description;
         var text = this.newsItem.value.text;
-        console.log("Submit");
         var newItem = new __WEBPACK_IMPORTED_MODULE_1__newsitem_model__["a" /* NewsItem */](title, description, text);
-        console.log("Newsitem" + newItem);
         this.dataService.addNewsItem(newItem).subscribe(function (item) {
-            //console.log(newItem);
             _this.newsAdded.emit(item);
         });
     };
@@ -1136,6 +1136,75 @@ PagenotfoundComponent = __decorate([
 ], PagenotfoundComponent);
 
 //# sourceMappingURL=pagenotfound.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/series/add-match/add-match.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/series/add-match/add-match.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  add-match works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/series/add-match/add-match.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__serie_service__ = __webpack_require__("../../../../../src/app/series/serie.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AddMatchComponent = (function () {
+    function AddMatchComponent(dataService) {
+        this.dataService = dataService;
+    }
+    AddMatchComponent.prototype.ngOnInit = function () {
+    };
+    return AddMatchComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], AddMatchComponent.prototype, "_match", void 0);
+AddMatchComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-add-match',
+        template: __webpack_require__("../../../../../src/app/series/add-match/add-match.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/series/add-match/add-match.component.css")],
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__serie_service__["a" /* SerieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__serie_service__["a" /* SerieService */]) === "function" && _a || Object])
+], AddMatchComponent);
+
+var _a;
+//# sourceMappingURL=add-match.component.js.map
 
 /***/ }),
 

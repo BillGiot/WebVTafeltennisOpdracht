@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SerieService } from './series/serie.service';
 import { BlogService } from './blog/blog.service';
+import { AddMatchComponent } from './series/add-match/add-match.component';
 
 
 
@@ -17,7 +18,8 @@ import { BlogService } from './blog/blog.service';
   declarations: [
     AppComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    AddMatchComponent
   ],
   imports: [
     MaterializeModule,

@@ -6,3 +6,7 @@
 .input-field{
     margin-top: 5% !important;
 }
+
+#error{
+    color: red !important;
+}
