@@ -42,6 +42,14 @@ router.get('/API/news/:newsitem', function (req, res) {
   res.json(req.newsitem);
 });
 
+router.put('/API/news/:newsitem', auth, function (req, res, next) {
+  let news = new NewsItem(req.body);
+  NewsItem.findByIdAndUpdate(req.params.newsitem, news, function (err, newsitem) {
+    res.send(newsitem);
+  });
+});
+
+
 router.delete('/API/news/:newsitem', auth, function (req, res, next) {
   req.newsitem.remove(function (err) {
     if (err) { return next(err); }
