@@ -17,7 +17,7 @@
         <label>Password</label>
         <input id="password" class="input col s2" type="password" class="validate" formControlName='password'>
         <div class='error' *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>
-          Wachtwoord is te kort, minstens {{passwordControl.errors?.passwordTooShort.requiredLength}} letters
+          Password too short, you must have at least {{passwordControl.errors?.passwordTooShort.requiredLength}} characters
         </div>
       </div>
 
@@ -25,7 +25,7 @@
         <label>Confirm password</label>
         <input id="confirmPassword" class="input col s2" type="password" class="validate" formControlName='confirmPassword'>
         <div class='error' *ngIf=' user.get("passwordGroup").errors?.passwordsDiffer && user.get("passwordGroup").get("confirmPassword").touched  && user.get("passwordGroup").get("password").touched'>
-          Wachtwoorden moeten hetzelfde zijn
+          Password must match!
         </div>
       </div>
 

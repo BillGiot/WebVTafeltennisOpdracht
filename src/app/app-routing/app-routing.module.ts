@@ -30,8 +30,8 @@ import { AddSerieComponent } from '../series/add-serie/add-serie.component';
 const appRoutes: Routes = [
     { path: 'news', component: NewsComponent},
     { path: 'news/:id', component: NewsDetailComponent, resolve: { newsItem: NewsResolver}},
-    { path: 'series', component: SeriesComponent},
-    { path: 'series/:id', component: MatchesComponent },
+    { path: 'series', canActivate: [AuthGuardService], component: SeriesComponent},
+    { path: 'series/:id', canActivate: [AuthGuardService], component: MatchesComponent },
     { path: 'blog',  canActivate: [ AuthGuardService ], component: BlogComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},

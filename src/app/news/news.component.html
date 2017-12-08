@@ -33,20 +33,13 @@
         </div>
 
         <div *ngIf = "isRegistered()" class= "row">
-          <div class = "col s6 left">
-              <button><i class="material-icons">edit</i></button>
-          </div>
-
-          <div class = "col s6 right">
               <button (click)="removeItem(newsitem)" ><i class="material-icons">delete</i></button>
             </div>
           </div>
-
-
-        </div>
       </div>
     </div>
   </div>
+  
 
   <div *ngIf ="isRegistered()"class="row center">
 

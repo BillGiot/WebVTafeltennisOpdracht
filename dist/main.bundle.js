@@ -82,8 +82,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var appRoutes = [
     { path: 'news', component: __WEBPACK_IMPORTED_MODULE_7__news_news_component__["a" /* NewsComponent */] },
     { path: 'news/:id', component: __WEBPACK_IMPORTED_MODULE_8__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */], resolve: { newsItem: __WEBPACK_IMPORTED_MODULE_22__news_add_news_news_resolver_service__["a" /* NewsResolver */] } },
-    { path: 'series', component: __WEBPACK_IMPORTED_MODULE_9__series_series_component__["a" /* SeriesComponent */] },
-    { path: 'series/:id', component: __WEBPACK_IMPORTED_MODULE_13__series_matches_matches_component__["a" /* MatchesComponent */] },
+    { path: 'series', canActivate: [__WEBPACK_IMPORTED_MODULE_15__user_auth_guard_service__["a" /* AuthGuardService */]], component: __WEBPACK_IMPORTED_MODULE_9__series_series_component__["a" /* SeriesComponent */] },
+    { path: 'series/:id', canActivate: [__WEBPACK_IMPORTED_MODULE_15__user_auth_guard_service__["a" /* AuthGuardService */]], component: __WEBPACK_IMPORTED_MODULE_13__series_matches_matches_component__["a" /* MatchesComponent */] },
     { path: 'blog', canActivate: [__WEBPACK_IMPORTED_MODULE_15__user_auth_guard_service__["a" /* AuthGuardService */]], component: __WEBPACK_IMPORTED_MODULE_10__blog_blog_component__["a" /* BlogComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_12__user_login_login_component__["a" /* LoginComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_16__user_register_register_component__["a" /* RegisterComponent */] },
@@ -381,7 +381,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/blog/blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h2>Blog feet</h2>\n  <h5>Post your comments below:</h5>\n  <app-add-post (postAdded)='addPost($event)'></app-add-post>\n\n  <div class=\"container\">\n    <h5 *ngIf=\"isEmpty() === true\">What others commented:</h5>\n    <div *ngFor=\"let post of posts\" class=\"row col s12\">\n      <div class=\" col s8\">\n        <div id=\"sectionPost\" class=\"chip\">\n          <i class=\"material-icons\">account_circle</i>\n          <span id=\"icontext\">{{post.user}}</span>\n        </div>\n        <p>{{post.text}}</p>\n        <p>\n          <span id=\"postDate\"> Posted on {{post.date | date}} </span>\n        </p>\n      </div>\n\n      <div class=\"col s4 right\">\n        <button *ngIf = \"isCurrentUser(post.user) === true\" (click)=\"removePost(post)\">\n          <i class=\"material-icons\">delete</i>\n        </button>\n      </div>\n\n      <div class=\"divider\"></div>\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <h2>Blog feet</h2>\n  <h5>Post your comments below:</h5>\n  <app-add-post (postAdded)='addPost($event)'></app-add-post>\n\n  <div class=\"container\">\n    <h5 *ngIf=\"isEmpty() === true\">What others commented:</h5>\n    <div *ngFor=\"let post of posts\" class=\"row col s12\">\n      <div class=\" col s8\">\n        <div id=\"sectionPost\" class=\"chip\">\n          <i class=\"material-icons\">account_circle</i>\n          <span id=\"icontext\">{{post.user}}</span>\n        </div>\n        <p>{{post.text}}</p>\n        <p>\n          <span id=\"postDate\"> Posted on {{post.date | date}} </span>\n        </p>\n      </div>\n\n      <div class=\"col s4 right\">\n        <button *ngIf = \"isCurrentUser(post.user)\" (click)=\"removePost(post)\">\n          <i class=\"material-icons\">delete</i>\n        </button>\n      </div>\n\n      <div class=\"divider\"></div>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -431,8 +431,6 @@ var BlogComponent = (function () {
         this._posts.push(post);
     };
     BlogComponent.prototype.isCurrentUser = function (username) {
-        console.log(username);
-        // return JSON.parse(localStorage.getItem('currentUser')).username === this.autservice.user$.getValue();
         return username === this.autservice.user$.getValue();
     };
     BlogComponent.prototype.removePost = function (post) {
@@ -970,8 +968,6 @@ var NewsDetailComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    NewsDetailComponent.prototype.editNewsItem = function (newsItem) {
-    };
     return NewsDetailComponent;
 }());
 NewsDetailComponent = __decorate([
@@ -1010,7 +1006,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/news/news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <h1 class=\"header center white-text text-darken-4\">EXPERIENCE TABLE TENNIS</h1>\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">Get the latest news, matches, live rankings and comments</h5>\n      </div>\n        <br/>\n        <div class=\"row center\">\n          <a (click)= \"scroll(target)\"class=\"btn btn-large\">GET THE LATEST NEWS</a>\n        <br/>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row center\" #target>\n<h2>LATEST UPDATES</h2>\n</div>\n<div class=\"row center\">\n    <div class=\"col s6\" *ngFor=\"let newsitem of newsItems\">\n      <div class=\"card card-panel hoverable\">\n        <div class=\"card-image\">\n          <img src=\"assets/img/img.jpg\">\n          <span class=\"card-title\">{{newsitem.title}}</span>\n        </div>\n        <div class=\"card-content\">\n          <p>{{newsitem.description}}</p>\n        </div>\n        <div class=\"card-action\">\n          <div class = \"row\">\n          <a [routerLink]=\"['./', newsitem.id]\">Read more</a>\n        </div>\n\n        <div *ngIf = \"isRegistered()\" class= \"row\">\n          <div class = \"col s6 left\">\n              <button><i class=\"material-icons\">edit</i></button>\n          </div>\n\n          <div class = \"col s6 right\">\n              <button (click)=\"removeItem(newsitem)\" ><i class=\"material-icons\">delete</i></button>\n            </div>\n          </div>\n\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div *ngIf =\"isRegistered()\"class=\"row center\">\n\n   <app-add-news (newsAdded) = \"addNewsItem($event)\">\n   </app-add-news>\n  </div>\n\n"
+module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <h1 class=\"header center white-text text-darken-4\">EXPERIENCE TABLE TENNIS</h1>\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">Get the latest news, matches, live rankings and comments</h5>\n      </div>\n        <br/>\n        <div class=\"row center\">\n          <a (click)= \"scroll(target)\"class=\"btn btn-large\">GET THE LATEST NEWS</a>\n        <br/>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row center\" #target>\n<h2>LATEST UPDATES</h2>\n</div>\n<div class=\"row center\">\n    <div class=\"col s6\" *ngFor=\"let newsitem of newsItems\">\n      <div class=\"card card-panel hoverable\">\n        <div class=\"card-image\">\n          <img src=\"assets/img/img.jpg\">\n          <span class=\"card-title\">{{newsitem.title}}</span>\n        </div>\n        <div class=\"card-content\">\n          <p>{{newsitem.description}}</p>\n        </div>\n        <div class=\"card-action\">\n          <div class = \"row\">\n          <a [routerLink]=\"['./', newsitem.id]\">Read more</a>\n        </div>\n\n        <div *ngIf = \"isRegistered()\" class= \"row\">\n              <button (click)=\"removeItem(newsitem)\" ><i class=\"material-icons\">delete</i></button>\n            </div>\n          </div>\n      </div>\n    </div>\n  </div>\n  \n\n  <div *ngIf =\"isRegistered()\"class=\"row center\">\n\n   <app-add-news (newsAdded) = \"addNewsItem($event)\">\n   </app-add-news>\n  </div>\n\n"
 
 /***/ }),
 
@@ -2090,7 +2086,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#error{\n    color: red;\n    \n}", ""]);
+exports.push([module.i, "#error{\n    color: red !important;\n\n}", ""]);
 
 // exports
 
@@ -2103,7 +2099,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/user/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <form [formGroup]='user' (ngSubmit)='onSubmit()' class=\"card-content\">\n    <div class=\"row\">\n      <h3>Register</h3>\n    </div>\n\n    <div class=\"row\">\n      <label>Username</label>\n      <input id=\"username\" class=\"input col s2\" type=\"text\" class=\"validate\" formControlName='username'>\n      <div class='error' *ngIf='user.get(\"username\").errors?.userAlreadyExists && user.get(\"username\").touched'>\n        This username already exists!\n      </div>\n    </div>\n\n    <div formGroupName='passwordGroup'>\n      <div class=\"row\">\n        <label>Password</label>\n        <input id=\"password\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='password'>\n        <div class='error' *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>\n          Wachtwoord is te kort, minstens {{passwordControl.errors?.passwordTooShort.requiredLength}} letters\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <label>Confirm password</label>\n        <input id=\"confirmPassword\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='confirmPassword'>\n        <div class='error' *ngIf=' user.get(\"passwordGroup\").errors?.passwordsDiffer && user.get(\"passwordGroup\").get(\"confirmPassword\").touched  && user.get(\"passwordGroup\").get(\"password\").touched'>\n          Wachtwoorden moeten hetzelfde zijn\n        </div>\n      </div>\n\n        <div class=\"row\">\n          <button type='submit' class=\"waves-effect waves-light btn\">Register</button>\n        </div>\n    </div>\n\n  </form>\n\n  </div>"
+module.exports = "<div class=\"container\">\n  <form [formGroup]='user' (ngSubmit)='onSubmit()' class=\"card-content\">\n    <div class=\"row\">\n      <h3>Register</h3>\n    </div>\n\n    <div class=\"row\">\n      <label>Username</label>\n      <input id=\"username\" class=\"input col s2\" type=\"text\" class=\"validate\" formControlName='username'>\n      <div class='error' *ngIf='user.get(\"username\").errors?.userAlreadyExists && user.get(\"username\").touched'>\n        This username already exists!\n      </div>\n    </div>\n\n    <div formGroupName='passwordGroup'>\n      <div class=\"row\">\n        <label>Password</label>\n        <input id=\"password\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='password'>\n        <div class='error' *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>\n          Password too short, you must have at least {{passwordControl.errors?.passwordTooShort.requiredLength}} characters\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <label>Confirm password</label>\n        <input id=\"confirmPassword\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='confirmPassword'>\n        <div class='error' *ngIf=' user.get(\"passwordGroup\").errors?.passwordsDiffer && user.get(\"passwordGroup\").get(\"confirmPassword\").touched  && user.get(\"passwordGroup\").get(\"password\").touched'>\n          Password must match!\n        </div>\n      </div>\n\n        <div class=\"row\">\n          <button type='submit' class=\"waves-effect waves-light btn\">Register</button>\n        </div>\n    </div>\n\n  </form>\n\n  </div>"
 
 /***/ }),
 

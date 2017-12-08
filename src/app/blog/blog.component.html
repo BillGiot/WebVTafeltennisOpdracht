@@ -18,7 +18,7 @@
       </div>
 
       <div class="col s4 right">
-        <button *ngIf = "isCurrentUser(post.user) === true" (click)="removePost(post)">
+        <button *ngIf = "isCurrentUser(post.user)" (click)="removePost(post)">
           <i class="material-icons">delete</i>
         </button>
       </div>

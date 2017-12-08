@@ -33,12 +33,13 @@ export class BlogComponent implements OnInit {
   }
 
   isCurrentUser(username) {
-    console.log(username);
-      // return JSON.parse(localStorage.getItem('currentUser')).username === this.autservice.user$.getValue();
+
       return username === this.autservice.user$.getValue();
   }
 
   removePost(post: Post) {
+
+    
     this.dataService.removePost(post).subscribe( item => {
       this._posts = this._posts.filter(val => val.id !== item.id);
     });
