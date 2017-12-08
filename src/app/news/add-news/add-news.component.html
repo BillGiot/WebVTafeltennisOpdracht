@@ -4,7 +4,7 @@
     <form  [formGroup]='newsItem' (ngSubmit)='onSubmit()'>
       <div class="row">
      <label  for="title">Title:</label>
-      <input class="validate"  placeholder= "What's your title?" id="title" type="text" formControlName="title">
+      <input   placeholder= "What's your title?" id="title" type="text" formControlName="title">
       <div id="error" *ngIf= 'newsItem.get("title").errors?.required && newsItem.get("title").touched'>
         Please fill in a title...
       </div>
@@ -12,7 +12,7 @@
 
       <div class="row">
       <label for="description">Description:</label>
-      <textarea  class="validate" placeholder= "Give your short description..." id="description" type="text" formControlName="description"></textarea>
+      <textarea   placeholder= "Give your short description..." id="description" type="text" formControlName="description"></textarea>
       <div id="error" *ngIf=' newsItem.get("description").errors?.required && newsItem.get("description").touched'>
         Please fill in the description...
       </div>
@@ -20,7 +20,7 @@
 
       <div class="row">
      <label for="text">Text:</label>
-      <textarea   class="validate" placeholder= "Write your article..." id="text" type="text" formControlName="text"></textarea>
+      <textarea   placeholder= "Write your article..." id="text" type="text" formControlName="text"></textarea>
       <div id="error" *ngIf=' newsItem.get("text").errors?.required && newsItem.get("text").touched'>
           Please fill in the text...
         </div>

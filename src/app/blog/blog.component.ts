@@ -38,8 +38,6 @@ export class BlogComponent implements OnInit {
   }
 
   removePost(post: Post) {
-
-    
     this.dataService.removePost(post).subscribe( item => {
       this._posts = this._posts.filter(val => val.id !== item.id);
     });

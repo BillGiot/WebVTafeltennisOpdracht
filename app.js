@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://admin:Topspin1308@ds127126.mlab.com:27126/tabletennisdb',{useMongoClient:true});
+//mongoose.connect(process.env.TABLETENNISDB);
 require('./models/NewsItem');
 require('./models/Match');
 require('./models/Serie');
