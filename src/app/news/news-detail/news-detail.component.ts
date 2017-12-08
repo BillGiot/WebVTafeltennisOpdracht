@@ -22,7 +22,4 @@ export class NewsDetailComponent implements OnInit {
     return this._newsItem;
   }
 
-  editNewsItem(newsItem) {
-
-  }
 }
