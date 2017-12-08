@@ -23,6 +23,7 @@ export class AddNewsComponent implements OnInit {
       text: ['', [Validators.required, Validators.minLength(20)]]
     });
 
+
   }
 
   onSubmit() {
@@ -32,7 +33,14 @@ export class AddNewsComponent implements OnInit {
     const newItem = new NewsItem(title, description, text);
     this.dataService.addNewsItem(newItem).subscribe(item => {
       this.newsAdded.emit(item);
+      this.clearFormText();
     });
+  }
+
+  clearFormText() {
+    this.newsItem.get('description').setValue('');
+    this.newsItem.get('title').setValue('');
+    this.newsItem.get('text').setValue('');
   }
 
 }

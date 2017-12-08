@@ -3,11 +3,17 @@
         <div id = "sidebaritem" class= "row">
             <ul class= "collection with-header">
               <li class="collection-header"  > <h5>Series</h5></li>
-              <a (click)="changeSerie(serie)" *ngFor="let serie of series" class="collection-item " ><li>{{serie.name}}</li></a>
+              <a (click)="changeSerie(serie)" *ngFor="let serie of series" class="collection-item " id= "current" ><li>{{serie.name}}</li></a>
             </ul>
           </div>
+          <div class="divider"></div>
+        <div id="sidebaritem" class = "row">
+            <app-add-serie (serieAdded) = "addSerie($event)"> </app-add-serie>
+        </div>
     </div>
  <app-matches [serie]='serie' > </app-matches>
+  
 </div>
 
-<!--[ingredient]='ing'-->
+
+

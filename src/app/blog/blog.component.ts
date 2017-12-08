@@ -12,7 +12,6 @@ export class BlogComponent implements OnInit {
   private user;
   private _posts = [];
 
-
   constructor(private autservice: AuthenticationService, private dataService: BlogService) { }
 
   ngOnInit() {
@@ -34,7 +33,9 @@ export class BlogComponent implements OnInit {
   }
 
   isCurrentUser(username) {
-      return JSON.parse(localStorage.getItem('currentUser')).username !== this.autservice.user$.value;
+    console.log(username);
+      // return JSON.parse(localStorage.getItem('currentUser')).username === this.autservice.user$.getValue();
+      return username === this.autservice.user$.getValue();
   }
 
   removePost(post: Post) {

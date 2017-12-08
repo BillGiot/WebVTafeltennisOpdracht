@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } => {
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+
 
   onSubmit() {
     this.authService.login(this.user.value.username,

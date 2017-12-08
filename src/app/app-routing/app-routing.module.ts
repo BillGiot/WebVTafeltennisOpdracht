@@ -21,12 +21,16 @@ import { AddPostComponent } from '../blog/add-post/add-post.component';
 import { LogoutComponent } from '../user/logout/logout.component';
 import { SerieService } from '../series/serie.service';
 import { BlogService } from '../blog/blog.service';
+import { NewsResolver } from '../news/add-news/news.resolver.service';
+import { AddMatchComponent } from '../series/matches/add-match/add-match.component';
+import { AddSerieComponent } from '../series/add-serie/add-serie.component';
+
 
 
 const appRoutes: Routes = [
     { path: 'news', component: NewsComponent},
-    { path: 'news/:id', component: NewsDetailComponent},
-    { path: 'series', component: SeriesComponent },
+    { path: 'news/:id', component: NewsDetailComponent, resolve: { newsItem: NewsResolver}},
+    { path: 'series', component: SeriesComponent},
     { path: 'series/:id', component: MatchesComponent },
     { path: 'blog',  canActivate: [ AuthGuardService ], component: BlogComponent},
     { path: 'login', component: LoginComponent},
@@ -58,7 +62,9 @@ const appRoutes: Routes = [
         AddNewsComponent,
         RegisterComponent,
         AddPostComponent,
-        LogoutComponent
+        LogoutComponent,
+        AddMatchComponent,
+        AddSerieComponent
     ],
     exports: [
       RouterModule
@@ -68,7 +74,8 @@ const appRoutes: Routes = [
     SerieService,
     BlogService,
     AuthenticationService,
-    AuthGuardService
+    AuthGuardService,
+    NewsResolver
 ]
   })
 export class AppRoutingModule {}

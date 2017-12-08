@@ -8,5 +8,8 @@ var MatchSchema = new mongoose.Schema({
     setsPlayerB: {type: Number, default: 0}
 });
 
+MatchSchema.pre('remove', function (next) {
+    this.model('Serie').update({}, { $pull: { matches: this._id } }, { safe: true, multi: true }, next);
+});
 
 mongoose.model('Match', MatchSchema);

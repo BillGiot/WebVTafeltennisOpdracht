@@ -45,6 +45,9 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__user_logout_logout_component__ = __webpack_require__("../../../../../src/app/user/logout/logout.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__series_serie_service__ = __webpack_require__("../../../../../src/app/series/serie.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__blog_blog_service__ = __webpack_require__("../../../../../src/app/blog/blog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__news_add_news_news_resolver_service__ = __webpack_require__("../../../../../src/app/news/add-news/news.resolver.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__series_matches_add_match_add_match_component__ = __webpack_require__("../../../../../src/app/series/matches/add-match/add-match.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__series_add_serie_add_serie_component__ = __webpack_require__("../../../../../src/app/series/add-serie/add-serie.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -73,9 +76,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var appRoutes = [
     { path: 'news', component: __WEBPACK_IMPORTED_MODULE_7__news_news_component__["a" /* NewsComponent */] },
-    { path: 'news/:id', component: __WEBPACK_IMPORTED_MODULE_8__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */] },
+    { path: 'news/:id', component: __WEBPACK_IMPORTED_MODULE_8__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */], resolve: { newsItem: __WEBPACK_IMPORTED_MODULE_22__news_add_news_news_resolver_service__["a" /* NewsResolver */] } },
     { path: 'series', component: __WEBPACK_IMPORTED_MODULE_9__series_series_component__["a" /* SeriesComponent */] },
     { path: 'series/:id', component: __WEBPACK_IMPORTED_MODULE_13__series_matches_matches_component__["a" /* MatchesComponent */] },
     { path: 'blog', canActivate: [__WEBPACK_IMPORTED_MODULE_15__user_auth_guard_service__["a" /* AuthGuardService */]], component: __WEBPACK_IMPORTED_MODULE_10__blog_blog_component__["a" /* BlogComponent */] },
@@ -111,7 +117,9 @@ AppRoutingModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_14__news_add_news_add_news_component__["a" /* AddNewsComponent */],
             __WEBPACK_IMPORTED_MODULE_16__user_register_register_component__["a" /* RegisterComponent */],
             __WEBPACK_IMPORTED_MODULE_18__blog_add_post_add_post_component__["a" /* AddPostComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__user_logout_logout_component__["a" /* LogoutComponent */]
+            __WEBPACK_IMPORTED_MODULE_19__user_logout_logout_component__["a" /* LogoutComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__series_matches_add_match_add_match_component__["a" /* AddMatchComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__series_add_serie_add_serie_component__["a" /* AddSerieComponent */]
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */]
@@ -121,7 +129,8 @@ AppRoutingModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_20__series_serie_service__["a" /* SerieService */],
             __WEBPACK_IMPORTED_MODULE_21__blog_blog_service__["a" /* BlogService */],
             __WEBPACK_IMPORTED_MODULE_17__user_authentication_service__["a" /* AuthenticationService */],
-            __WEBPACK_IMPORTED_MODULE_15__user_auth_guard_service__["a" /* AuthGuardService */]
+            __WEBPACK_IMPORTED_MODULE_15__user_auth_guard_service__["a" /* AuthGuardService */],
+            __WEBPACK_IMPORTED_MODULE_22__news_add_news_news_resolver_service__["a" /* NewsResolver */]
         ]
     })
 ], AppRoutingModule);
@@ -203,14 +212,12 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__series_serie_service__ = __webpack_require__("../../../../../src/app/series/serie.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blog_blog_service__ = __webpack_require__("../../../../../src/app/blog/blog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__series_add_match_add_match_component__ = __webpack_require__("../../../../../src/app/series/add-match/add-match.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -234,7 +241,6 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_6__menu_menu_component__["a" /* MenuComponent */],
             __WEBPACK_IMPORTED_MODULE_7__footer_footer_component__["a" /* FooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__series_add_match_add_match_component__["a" /* AddMatchComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1_angular2_materialize__["a" /* MaterializeModule */],
@@ -273,7 +279,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/blog/add-post/add-post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <form [formGroup]='post' (ngSubmit)='onSubmit()'>\n    <div class=\"row\" id=\"inputForm\">\n      <div class=\"chip\">\n        <i class=\"material-icons\">account_circle</i> <span id=\"icontext\">{{currentUser|async}}</span>\n      </div>\n      <div class=\"input-field\">\n        \n        <textarea id=\"text\" class=\"materialize-textarea\"  formControlName=\"text\" ></textarea>\n        <label for=\"text\">Post</label>\n        <div *ngIf='errorMsg' id=\"error\">{{errorMsg}}</div>\n        <div id=\"error\" *ngIf= 'post.get(\"text\").errors?.minlength && post.get(\"text\").touched'>Minimum length of your message is 20 characters</div>\n\n        <button [disabled]=\"!post.valid\" class=\"btn waves-effect waves-light right\" type=\"submit\" name=\"action\">Submit\n          <i class=\"material-icons right\">send</i>\n        </button>\n\n      \n      </div>\n    </div>\n  </form>\n</div>"
+module.exports = "<div class=\"row\">\n  <form [formGroup]='post' (ngSubmit)='onSubmit()'>\n    <div class=\"row\" id=\"inputForm\">\n      <div class=\"chip\">\n        <i class=\"material-icons\">account_circle</i> <span id=\"icontext\">{{currentUser|async}}</span>\n      </div>\n      <div class=\"input-field\">\n        \n        <textarea id=\"text\" class=\"materialize-textarea\"  formControlName=\"text\" ></textarea>\n        <label for=\"text\">Post</label>\n        <div *ngIf='errorMsg' id=\"error\">{{errorMsg}}</div>\n        <div id=\"error\" *ngIf= 'post.get(\"text\").errors?.minlength && post.get(\"text\").touched'>Minimum length of your message is 20 characters</div>\n\n        <button [disabled]=\"!post.valid\" class=\"btn waves-effect waves-light right\" type=\"submit\">Submit\n          <i class=\"material-icons right\">send</i>\n        </button>\n\n      \n      </div>\n    </div>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -425,7 +431,9 @@ var BlogComponent = (function () {
         this._posts.push(post);
     };
     BlogComponent.prototype.isCurrentUser = function (username) {
-        return JSON.parse(localStorage.getItem('currentUser')).username === this.autservice.user$.value;
+        console.log(username);
+        // return JSON.parse(localStorage.getItem('currentUser')).username === this.autservice.user$.getValue();
+        return username === this.autservice.user$.getValue();
     };
     BlogComponent.prototype.removePost = function (post) {
         var _this = this;
@@ -720,7 +728,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/news/add-news/add-news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class= \"container\">\n  <h4>Add your news:</h4>\n  <div id=\"addNews\" class=\"row\">\n    <form  [formGroup]='newsItem' (ngSubmit)='onSubmit()'>\n      <div class=\"input-field\">\n      <input  placeholder= \"What's your title?\" class=\"active\" id=\"title\" type=\"text\" formControlName=\"title\">\n      <label  for=\"title\">Title:</label>\n      <div id=\"error\" *ngIf= 'newsItem.get(\"title\").errors?.required && newsItem.get(\"title\").touched'>\n        Please fill in a title...\n      </div>\n    </div>\n\n      <div class=\"input-field\">\n      <textarea placeholder= \"Give your short description...\" class=\"active\" id=\"description\" type=\"text\" formControlName=\"description\"></textarea>\n      <label for=\"description\">Description:</label>\n      <div id=\"error\" *ngIf=' newsItem.get(\"description\").errors?.required && newsItem.get(\"description\").touched'>\n        Please fill in the description...\n      </div>\n    </div>\n\n      <div class=\"input-field\">\n      <textarea  placeholder= \"Write your article...\" class=\"active\" id=\"text\" type=\"text\" formControlName=\"text\"></textarea>\n      <label for=\"text\">Text:</label>\n      <div id=\"error\" *ngIf=' newsItem.get(\"text\").errors?.minlength && newsItem.get(\"text\").touched'>\n        password too short, please use at least {{passwordControl.errors?.passwordTooShort.requiredLength}} letters (got {{passwordControl.errors?.passwordTooShort.actualLength}})\n      </div>\n    </div>\n\n      <div class=\"row\">\n      <button class = \"btn waves-effect waves-light\" type =\"submit\">Submit</button>\n    </div>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class= \"container\">\n  <h4>Add your news:</h4>\n  <div id=\"addNews\" class=\"row\">\n    <form  [formGroup]='newsItem' (ngSubmit)='onSubmit()'>\n      <div class=\"row\">\n     <label  for=\"title\">Title:</label>\n      <input class=\"validate\"  placeholder= \"What's your title?\" id=\"title\" type=\"text\" formControlName=\"title\">\n      <div id=\"error\" *ngIf= 'newsItem.get(\"title\").errors?.required && newsItem.get(\"title\").touched'>\n        Please fill in a title...\n      </div>\n    </div>\n\n      <div class=\"row\">\n      <label for=\"description\">Description:</label>\n      <textarea  class=\"validate\" placeholder= \"Give your short description...\" id=\"description\" type=\"text\" formControlName=\"description\"></textarea>\n      <div id=\"error\" *ngIf=' newsItem.get(\"description\").errors?.required && newsItem.get(\"description\").touched'>\n        Please fill in the description...\n      </div>\n    </div>\n\n      <div class=\"row\">\n     <label for=\"text\">Text:</label>\n      <textarea   class=\"validate\" placeholder= \"Write your article...\" id=\"text\" type=\"text\" formControlName=\"text\"></textarea>\n      <div id=\"error\" *ngIf=' newsItem.get(\"text\").errors?.required && newsItem.get(\"text\").touched'>\n          Please fill in the text...\n        </div>\n      <div id=\"error\" *ngIf=' newsItem.get(\"text\").errors?.minlength && newsItem.get(\"text\").touched'>\n        The text must be at least 20 characters \n      </div>\n    </div>\n\n      <div class=\"row\">\n      <button [disabled]=\"!newsItem.valid\" class = \"btn waves-effect waves-light\" type =\"submit\">Submit</button>\n    </div>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -767,7 +775,13 @@ var AddNewsComponent = (function () {
         var newItem = new __WEBPACK_IMPORTED_MODULE_1__newsitem_model__["a" /* NewsItem */](title, description, text);
         this.dataService.addNewsItem(newItem).subscribe(function (item) {
             _this.newsAdded.emit(item);
+            _this.clearFormText();
         });
+    };
+    AddNewsComponent.prototype.clearFormText = function () {
+        this.newsItem.get('description').setValue('');
+        this.newsItem.get('title').setValue('');
+        this.newsItem.get('text').setValue('');
     };
     return AddNewsComponent;
 }());
@@ -786,6 +800,43 @@ AddNewsComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=add-news.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/news/add-news/news.resolver.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsResolver; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__news_data_service__ = __webpack_require__("../../../../../src/app/news/news-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NewsResolver = (function () {
+    function NewsResolver(dataService) {
+        this.dataService = dataService;
+    }
+    NewsResolver.prototype.resolve = function (route, state) {
+        return this.dataService.getNewsItemById(route.params['id']);
+    };
+    return NewsResolver;
+}());
+NewsResolver = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__news_data_service__["a" /* NewsDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__news_data_service__["a" /* NewsDataService */]) === "function" && _a || Object])
+], NewsResolver);
+
+var _a;
+//# sourceMappingURL=news.resolver.service.js.map
 
 /***/ }),
 
@@ -822,22 +873,24 @@ var NewsDataService = (function () {
     NewsDataService.prototype.newsItems = function () {
         return this.http.get(this._appUrl + 'news').map(function (response) {
             return response.json().map(function (item) {
-                return new __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */](item.title, item.description, item.text, item.id);
+                return new __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */](item.title, item.description, item.text, item._id);
             });
         });
     };
-    NewsDataService.prototype.newsItem = function (id) {
+    NewsDataService.prototype.getNewsItemById = function (id) {
         return this.http.get(this._appUrl + "news/" + id)
             .map(function (response) { return response.json(); }).map(function (item) {
-            console.log(item);
             return __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */].fromJSON(item);
         });
     };
-    NewsDataService.prototype.addNewsItem = function (rec) {
-        console.log(rec.id);
-        return this.http.post(this._appUrl + "news/", rec, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ Authorization: "Bearer " + this.auth.token }) })
+    NewsDataService.prototype.addNewsItem = function (news) {
+        return this.http.post(this._appUrl + "news", news, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ Authorization: "Bearer " + this.auth.token }) })
             .map(function (response) { return response.json(); })
             .map(function (item) { return __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */].fromJSON(item); });
+    };
+    NewsDataService.prototype.removeItem = function (news) {
+        return this.http.delete(this._appUrl + "news/" + news.id, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ Authorization: "Bearer " + this.auth.token }) })
+            .map(function (res) { return res.json(); }).map(function (item) { return __WEBPACK_IMPORTED_MODULE_3__newsitem_model__["a" /* NewsItem */].fromJSON(item); });
     };
     return NewsDataService;
 }());
@@ -872,7 +925,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/news/news-detail/news-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <h2>{{newsItem?.title}}</h2>\n</div>\n\n<div class =\"row center\" >\n<img src=\"assets/img/img.jpg\" height=\"400px\">\n\n</div>\n\n<div class=\"row\">\n<p>{{newsItem?.text}}</p>\n<p></p>\n\n</div>\n"
+module.exports = "<div class=\"row\">\n    <h2>{{newsItem?.title}}</h2>\n</div>\n\n<div class =\"row center\" >\n<img src=\"assets/img/img.jpg\" height=\"400px\">\n\n</div>\n\n<div class=\"row\">\n<p>{{newsItem?.text}}</p>\n<p></p>\n\n\n</div>\n"
 
 /***/ }),
 
@@ -884,6 +937,7 @@ module.exports = "<div class=\"row\">\n    <h2>{{newsItem?.title}}</h2>\n</div>\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__news_data_service__ = __webpack_require__("../../../../../src/app/news/news-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__ = __webpack_require__("../../../../../src/app/user/authentication.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -896,18 +950,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var NewsDetailComponent = (function () {
-    function NewsDetailComponent(route, dataService) {
+    function NewsDetailComponent(route, dataService, authService) {
         this.route = route;
         this.dataService = dataService;
+        this.authService = authService;
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.paramMap.subscribe(function (pa) {
-            return _this.dataService.newsItem(pa.get('id'))
-                .subscribe(function (item) {
-                _this._newsItem = item;
-            });
+        this.route.data.subscribe(function (item) {
+            return _this._newsItem = item['newsItem'];
         });
     };
     Object.defineProperty(NewsDetailComponent.prototype, "newsItem", {
@@ -917,6 +970,8 @@ var NewsDetailComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    NewsDetailComponent.prototype.editNewsItem = function (newsItem) {
+    };
     return NewsDetailComponent;
 }());
 NewsDetailComponent = __decorate([
@@ -926,10 +981,10 @@ NewsDetailComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/news/news-detail/news-detail.component.css")],
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__["a" /* AuthenticationService */]) === "function" && _c || Object])
 ], NewsDetailComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=news-detail.component.js.map
 
 /***/ }),
@@ -955,7 +1010,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/news/news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <h1 class=\"header center white-text text-darken-4\">EXPERIENCE TABLE TENNIS</h1>\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">Get the latest news, matches, live rankings and comments</h5>\n      </div>\n        <br/>\n        <div class=\"row center\">\n          <a (click)= \"scroll(target)\"class=\"btn btn-large\">GET THE LATEST NEWS</a>\n        <br/>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row center\" #target>\n<h2>LATEST UPDATES</h2>\n</div>\n<div class=\"row center\">\n    <div class=\"col s6\" *ngFor=\"let newsitem of newsItems\">\n      <div class=\"card card-panel hoverable\">\n        <div class=\"card-image\">\n          <img src=\"assets/img/img.jpg\">\n          <span class=\"card-title\">{{newsitem.title}}</span>\n        </div>\n        <div class=\"card-content\">\n          <p>{{newsitem.description}}</p>\n        </div>\n        <div class=\"card-action\">\n          <a [routerLink]=\"['./', newsitem?.id]\">Read more</a>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row center\">\n\n   <app-add-news (newsAdded) = \"addNewsItem($event)\">\n   </app-add-news>\n  </div>\n  <!--\n   <div id = \"item\">\n    <div class=\"row\" *ngFor=\"let newsitem of newsItems\">\n      <h2>{{newsitem.title}}</h2>\n        <p>{{newsitem.text}}</p>\n    </div>\n    <div class=\"divider\"></div>\n  </div> -->\n"
+module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <h1 class=\"header center white-text text-darken-4\">EXPERIENCE TABLE TENNIS</h1>\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">Get the latest news, matches, live rankings and comments</h5>\n      </div>\n        <br/>\n        <div class=\"row center\">\n          <a (click)= \"scroll(target)\"class=\"btn btn-large\">GET THE LATEST NEWS</a>\n        <br/>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row center\" #target>\n<h2>LATEST UPDATES</h2>\n</div>\n<div class=\"row center\">\n    <div class=\"col s6\" *ngFor=\"let newsitem of newsItems\">\n      <div class=\"card card-panel hoverable\">\n        <div class=\"card-image\">\n          <img src=\"assets/img/img.jpg\">\n          <span class=\"card-title\">{{newsitem.title}}</span>\n        </div>\n        <div class=\"card-content\">\n          <p>{{newsitem.description}}</p>\n        </div>\n        <div class=\"card-action\">\n          <div class = \"row\">\n          <a [routerLink]=\"['./', newsitem.id]\">Read more</a>\n        </div>\n\n        <div *ngIf = \"isRegistered()\" class= \"row\">\n          <div class = \"col s6 left\">\n              <button><i class=\"material-icons\">edit</i></button>\n          </div>\n\n          <div class = \"col s6 right\">\n              <button (click)=\"removeItem(newsitem)\" ><i class=\"material-icons\">delete</i></button>\n            </div>\n          </div>\n\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div *ngIf =\"isRegistered()\"class=\"row center\">\n\n   <app-add-news (newsAdded) = \"addNewsItem($event)\">\n   </app-add-news>\n  </div>\n\n"
 
 /***/ }),
 
@@ -966,6 +1021,7 @@ module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__news_data_service__ = __webpack_require__("../../../../../src/app/news/news-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_authentication_service__ = __webpack_require__("../../../../../src/app/user/authentication.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -977,15 +1033,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var NewsComponent = (function () {
-    function NewsComponent(dataService) {
+    function NewsComponent(dataService, authService) {
         this.dataService = dataService;
+        this.authService = authService;
     }
     NewsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataService.newsItems().subscribe(function (items) {
-            _this._newsItems = items;
             console.log(items);
+            _this._newsItems = items;
         });
     };
     Object.defineProperty(NewsComponent.prototype, "newsItems", {
@@ -1001,6 +1059,17 @@ var NewsComponent = (function () {
     NewsComponent.prototype.addNewsItem = function (news) {
         this._newsItems.push(news);
     };
+    NewsComponent.prototype.removeItem = function (newsitem) {
+        var _this = this;
+        this.dataService.removeItem(newsitem).subscribe(function (item) {
+            _this._newsItems = _this._newsItems.filter(function (val) { return val.id !== item.id; });
+        });
+    };
+    NewsComponent.prototype.isRegistered = function () {
+        if (this.authService.user$.getValue()) {
+            return true;
+        }
+    };
     return NewsComponent;
 }());
 NewsComponent = __decorate([
@@ -1010,10 +1079,10 @@ NewsComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/news/news.component.css")],
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__news_data_service__["a" /* NewsDataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__user_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__user_authentication_service__["a" /* AuthenticationService */]) === "function" && _b || Object])
 ], NewsComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=news.component.js.map
 
 /***/ }),
@@ -1037,6 +1106,9 @@ var NewsItem = (function () {
     Object.defineProperty(NewsItem.prototype, "id", {
         get: function () {
             return this._id;
+        },
+        set: function (id) {
+            this._id = id;
         },
         enumerable: true,
         configurable: true
@@ -1139,7 +1211,7 @@ PagenotfoundComponent = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/series/add-match/add-match.component.css":
+/***/ "../../../../../src/app/series/add-serie/add-serie.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1157,20 +1229,23 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/series/add-match/add-match.component.html":
+/***/ "../../../../../src/app/series/add-serie/add-serie.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  add-match works!\n</p>\n"
+module.exports = "<div class=\"row\">\n  <h6>Add Serie</h6>\n  <form [formGroup]='serie' (ngSubmit)='onSubmit()'>\n      <label for=\"name\">Serie name:</label>\n      <input id=\"name\" type=\"text\" formControlName=\"name\">\n      <div id=\"error\" *ngIf= 'serie.get(\"name\").errors?.required && serie.get(\"name\").touched'>Please choose a name</div>\n      <button [disabled]=\"!serie.valid\" type=\"submit\" class=\"btn waves-effect waves-light\"><i class=\"material-icons\">add</i></button>\n  </form>\n</div>"
 
 /***/ }),
 
-/***/ "../../../../../src/app/series/add-match/add-match.component.ts":
+/***/ "../../../../../src/app/series/add-serie/add-serie.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddSerieComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__serie_service__ = __webpack_require__("../../../../../src/app/series/serie.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__serie_model__ = __webpack_require__("../../../../../src/app/series/serie.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__serie_service__ = __webpack_require__("../../../../../src/app/series/serie.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_authentication_service__ = __webpack_require__("../../../../../src/app/user/authentication.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1182,29 +1257,232 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AddMatchComponent = (function () {
-    function AddMatchComponent(dataService) {
+
+
+
+var AddSerieComponent = (function () {
+    function AddSerieComponent(dataService, authService, fb) {
         this.dataService = dataService;
+        this.authService = authService;
+        this.fb = fb;
+        this.serieAdded = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
-    AddMatchComponent.prototype.ngOnInit = function () {
+    AddSerieComponent.prototype.ngOnInit = function () {
+        this.serie = this.fb.group({
+            name: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].minLength(5)]]
+        });
     };
-    return AddMatchComponent;
+    AddSerieComponent.prototype.onSubmit = function () {
+        var _this = this;
+        var name = this.serie.value.name;
+        var newSerie = new __WEBPACK_IMPORTED_MODULE_2__serie_model__["a" /* Serie */](name);
+        this.dataService.addSerie(newSerie).subscribe(function (item) {
+            _this.serieAdded.emit(item);
+            _this.serie.get('name').setValue('');
+        });
+    };
+    return AddSerieComponent;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
-], AddMatchComponent.prototype, "_match", void 0);
+], AddSerieComponent.prototype, "serieAdded", void 0);
+AddSerieComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-add-serie',
+        template: __webpack_require__("../../../../../src/app/series/add-serie/add-serie.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/series/add-serie/add-serie.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__serie_service__["a" /* SerieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__serie_service__["a" /* SerieService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__user_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__user_authentication_service__["a" /* AuthenticationService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object])
+], AddSerieComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=add-serie.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/series/matches/add-match/add-match.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#addmatch{\n    margin-top: 5%;\n    border: solid 1px #e9e9e9;\n}\n\n#error{\n    color: red !important;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/series/matches/add-match/add-match.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div id= \"addmatch\" class=\"row\" >\n <h5>Add a new match to {{serie?.name}}</h5>\n<form [formGroup]='match' (ngSubmit)='onSubmit()'>\n    <div class=\"date\">\n        <h6 >Choose your date:</h6>\n        <input id=\"datepicker\" class= \"center-align\" type=\"date\" placeholder=\"Choose a date\" formControlName=\"date\">\n        <div id=\"error\" *ngIf= 'match.get(\"date\").errors?.required && match.get(\"date\").touched'>Please choose a date</div>\n    </div>\n\n    <div class=\"row\">\n        <label>Player A: </label>\n        <input class= \" center-align\" type=\"text\" formControlName=\"playerA\">\n        <div id=\"error\" *ngIf= 'match.get(\"playerA\").errors?.required && match.get(\"playerA\").touched'>Please fill in a name</div>\n    </div>\n\n    <div class=\"row\">\n        <label>Player B:</label>\n        <input class=\" center-align\" type=\"text\" formControlName=\"playerB\">\n        <div id=\"error\" *ngIf= 'match.get(\"playerB\").errors?.required && match.get(\"playerB\").touched'>Please fill in a name</div>\n    </div>\n\n    <div class=\"row\">\n         <label>Sets player A:</label>\n         <input class= \" center-align\"  type=\"number\"  min=\"0\" max=\"4\" formControlName=\"setsPlayerA\">\n         <div id=\"error\" *ngIf= 'match.get(\"setsPlayerA\").errors?.required && match.get(\"setsPlayerA\").touched'>Please fill in a score</div>\n    </div>\n\n    <div class=\"row\">\n        <label>Sets Player B:</label>\n        <input class=\"center-align\" type=\"number\" min=\"0\" max=\"4\" formControlName=\"setsPlayerB\">\n        <div id=\"error\" *ngIf= 'match.get(\"setsPlayerB\").errors?.required && match.get(\"setsPlayerB\").touched'>Please fill in a score</div>\n    </div>\n\n    <div class=\"row\" *ngIf='errorMsg' id= \"error\" >{{errorMsg}}</div>\n\n<button  [disabled]=\"!match.valid\" class=\"waves-effect waves-light btn\" type= \"submit\">Add your match</button>\n</form>\n\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/series/matches/add-match/add-match.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__serie_service__ = __webpack_require__("../../../../../src/app/series/serie.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__match_model__ = __webpack_require__("../../../../../src/app/series/matches/match.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__ = __webpack_require__("../../../../../src/app/user/authentication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__serie_model__ = __webpack_require__("../../../../../src/app/series/serie.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var AddMatchComponent = (function () {
+    function AddMatchComponent(route, dataService, authService, fb) {
+        this.route = route;
+        this.dataService = dataService;
+        this.fb = fb;
+        this.matchAdded = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.errorMsg = '';
+    }
+    AddMatchComponent.prototype.ngOnInit = function () {
+        this.match = this.fb.group({
+            date: ['', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["d" /* Validators */].required]],
+            playerA: ['', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["d" /* Validators */].required]],
+            playerB: ['', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["d" /* Validators */].required]],
+            setsPlayerA: ['', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["d" /* Validators */].required]],
+            setsPlayerB: ['', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["d" /* Validators */].required]],
+        });
+    };
+    AddMatchComponent.prototype.onSubmit = function () {
+        var _this = this;
+        var newMatch = new __WEBPACK_IMPORTED_MODULE_2__match_model__["a" /* Match */](this.match.value.date, this.match.value.playerA, this.match.value.playerB, this.match.value.setsPlayerA, this.match.value.setsPlayerB);
+        console.log(this.match.value.date, this.match.value.playerA, this.match.value.playerB, this.match.value.setsPlayerA, this.match.value.setsPlayerB);
+        console.log(this.serie);
+        this.dataService.addMatch(newMatch, this.serie).subscribe(function (item) {
+            _this.matchAdded.emit(newMatch);
+            _this.match.get('playerA').setValue('');
+            _this.match.get('playerB').setValue('');
+            _this.match.get('setsPlayerA').setValue('');
+            _this.match.get('setsPlayerB').setValue('');
+            _this.errorMsg = '';
+        }, function (err) { return _this.errorMsg = err.json().message; });
+    };
+    return AddMatchComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__serie_model__["a" /* Serie */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__serie_model__["a" /* Serie */]) === "function" && _a || Object)
+], AddMatchComponent.prototype, "serie", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], AddMatchComponent.prototype, "matchAdded", void 0);
 AddMatchComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-add-match',
-        template: __webpack_require__("../../../../../src/app/series/add-match/add-match.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/series/add-match/add-match.component.css")],
+        template: __webpack_require__("../../../../../src/app/series/matches/add-match/add-match.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/series/matches/add-match/add-match.component.css")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__serie_service__["a" /* SerieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__serie_service__["a" /* SerieService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__serie_service__["a" /* SerieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__serie_service__["a" /* SerieService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__["a" /* AuthenticationService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */]) === "function" && _e || Object])
 ], AddMatchComponent);
 
-var _a;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=add-match.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/series/matches/match.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Match; });
+var Match = (function () {
+    function Match(date, playerA, playerB, setsPlayerA, setsPlayerB, id) {
+        this._id = id;
+        this._date = date;
+        this._playerA = playerA;
+        this._playerB = playerB;
+        this._setsPlayerA = setsPlayerA;
+        this._setsPlayerB = setsPlayerB;
+    }
+    Object.defineProperty(Match.prototype, "id", {
+        get: function () {
+            return this._id;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Match.prototype, "date", {
+        get: function () {
+            return this._date;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Match.prototype, "playerA", {
+        get: function () {
+            return this._playerA;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Match.prototype, "playerB", {
+        get: function () {
+            return this._playerB;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Match.prototype, "setsPlayerA", {
+        get: function () {
+            return this._setsPlayerA;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Match.prototype, "setsPlayerB", {
+        get: function () {
+            return this._setsPlayerB;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Match.fromJSON = function (json) {
+        var rec = new Match(json.date, json.playerA, json.playerB, json.setsPlayerA, json.setsPlayerB, json._id);
+        return rec;
+    };
+    Match.prototype.toJSON = function () {
+        return {
+            id: this._id,
+            date: this._date,
+            playerA: this._playerA,
+            playerB: this._playerB,
+            setsPlayerA: this._setsPlayerA,
+            setsPlayerB: this._setsPlayerB
+        };
+    };
+    return Match;
+}());
+
+//# sourceMappingURL=match.model.js.map
 
 /***/ }),
 
@@ -1229,7 +1507,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/series/matches/matches.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"row center col s9\">\n  <h4>{{serie?.title}}</h4>\n  <table class=\"centered highlight bordered responsive-table\">\n    <thead>\n      <tr>\n          <th>Date</th>\n          <th>Player</th>\n          <th>Player</th>\n          <th>Score</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr  *ngFor=\"let match of serie?.matches\">\n        <td>{{match?.date | date}}</td>\n        <td>{{match?.playerA}}</td>\n        <td>{{match?.playerB}}</td>\n        <td>{{match?.setsPlayerA}} - {{match?.setsPlayerB}} </td>\n      </tr>\n    </tbody>\n  </table>\n\n</div>\n"
+module.exports = "\n<div class=\"row center col s9\">\n  <h4>{{serie?.title}}</h4>\n  <table class=\"centered highlight bordered responsive-table\">\n    <thead>\n      <tr>\n          <th>Date</th>\n          <th>Player</th>\n          <th>Player</th>\n          <th>Score</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr  *ngFor=\"let match of serie?.matches\">\n        <td>{{match?.date | date}}</td>\n        <td>{{match?.playerA}}</td>\n        <td>{{match?.playerB}}</td>\n        <td>{{match?.setsPlayerA}} - {{match?.setsPlayerB}} </td>\n      </tr>\n    </tbody>\n  </table>\n\n<app-add-match [serie]=\"serie\"  (matchAdded)='addMatch($event)'></app-add-match>\n</div>\n"
 
 /***/ }),
 
@@ -1259,8 +1537,19 @@ var MatchesComponent = (function () {
     function MatchesComponent(route, dataService) {
         this.route = route;
         this.dataService = dataService;
+        this._matches = [];
     }
     MatchesComponent.prototype.ngOnInit = function () {
+    };
+    Object.defineProperty(MatchesComponent.prototype, "matches", {
+        get: function () {
+            return this.serie.matches;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MatchesComponent.prototype.addMatch = function (match) {
+        this.serie.matches.push(match);
     };
     return MatchesComponent;
 }());
@@ -1339,9 +1628,10 @@ var Serie = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SerieService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__serie_model__ = __webpack_require__("../../../../../src/app/series/serie.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__serie_model__ = __webpack_require__("../../../../../src/app/series/serie.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__ = __webpack_require__("../../../../../src/app/user/authentication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matches_match_model__ = __webpack_require__("../../../../../src/app/series/matches/match.model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1355,28 +1645,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SerieService = (function () {
-    function SerieService(http) {
+    function SerieService(http, auth) {
         this.http = http;
+        this.auth = auth;
         this._appUrl = '/API/';
     }
     SerieService.prototype.series = function () {
-        return this.http.get(this._appUrl + "series/").map(function (response) { return response.json().map(function (item) { return __WEBPACK_IMPORTED_MODULE_3__serie_model__["a" /* Serie */].fromJSON(item); }); });
+        return this.http.get(this._appUrl + "series/").map(function (response) { return response.json().map(function (item) { return __WEBPACK_IMPORTED_MODULE_2__serie_model__["a" /* Serie */].fromJSON(item); }); });
     };
     SerieService.prototype.serie = function (id) {
         return this.http.get(this._appUrl + "series/" + id)
             .map(function (response) { return response.json(); }).map(function (item) {
-            return __WEBPACK_IMPORTED_MODULE_3__serie_model__["a" /* Serie */].fromJSON(item);
+            return __WEBPACK_IMPORTED_MODULE_2__serie_model__["a" /* Serie */].fromJSON(item);
         });
+    };
+    SerieService.prototype.addSerie = function (rec) {
+        return this.http.post(this._appUrl + "series", rec, { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ Authorization: "Bearer " + this.auth.token }) })
+            .map(function (res) { return res.json(); }).map(function (item) { return __WEBPACK_IMPORTED_MODULE_2__serie_model__["a" /* Serie */].fromJSON(item); });
+    };
+    SerieService.prototype.addMatch = function (match, serie) {
+        return this.http.post(this._appUrl + "series/" + serie.id + "/matches", match)
+            .map(function (res) { return res.json(); }).map(function (item) { return __WEBPACK_IMPORTED_MODULE_4__matches_match_model__["a" /* Match */].fromJSON(item); });
     };
     return SerieService;
 }());
 SerieService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__user_authentication_service__["a" /* AuthenticationService */]) === "function" && _b || Object])
 ], SerieService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=serie.service.js.map
 
 /***/ }),
@@ -1389,7 +1689,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#seriesRow{\n    margin-bottom: 0;\n}\n", ""]);
+exports.push([module.i, "#seriesRow{\n    margin-bottom: 0;\n}\n\n\n#sidenav{\nmin-height: 100%;\n}", ""]);
 
 // exports
 
@@ -1402,7 +1702,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/series/series.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"seriesRow\" class=\"row\">\n    <div id=\"sidenav\" class=\"col s3 z-depth-2 center-align\">\n        <div id = \"sidebaritem\" class= \"row\">\n            <ul class= \"collection with-header\">\n              <li class=\"collection-header\"  > <h5>Series</h5></li>\n              <a (click)=\"changeSerie(serie)\" *ngFor=\"let serie of series\" class=\"collection-item \" ><li>{{serie.name}}</li></a>\n            </ul>\n          </div>\n    </div>\n <app-matches [serie]='serie' > </app-matches>\n</div>\n\n<!--[ingredient]='ing'-->"
+module.exports = "<div id=\"seriesRow\" class=\"row\">\n    <div id=\"sidenav\" class=\"col s3 z-depth-2 center-align\">\n        <div id = \"sidebaritem\" class= \"row\">\n            <ul class= \"collection with-header\">\n              <li class=\"collection-header\"  > <h5>Series</h5></li>\n              <a (click)=\"changeSerie(serie)\" *ngFor=\"let serie of series\" class=\"collection-item \" id= \"current\" ><li>{{serie.name}}</li></a>\n            </ul>\n          </div>\n          <div class=\"divider\"></div>\n        <div id=\"sidebaritem\" class = \"row\">\n            <app-add-serie (serieAdded) = \"addSerie($event)\"> </app-add-serie>\n        </div>\n    </div>\n <app-matches [serie]='serie' > </app-matches>\n  \n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -1445,6 +1745,9 @@ var SeriesComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    SeriesComponent.prototype.addSerie = function (serie) {
+        this._series.push(serie);
+    };
     return SeriesComponent;
 }());
 SeriesComponent = __decorate([
@@ -1787,7 +2090,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "#error{\n    color: red;\n    \n}", ""]);
 
 // exports
 
@@ -1800,7 +2103,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/user/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\n  <form [formGroup]='user' (ngSubmit)='onSubmit()' class=\"card-content\">\n<div class =\"row\">\n  <h3>Register</h3>\n</div>\n\n<div class = \"row\">\n   <label>Username</label>\n    <input id=\"username\" class=\"input col s2\" type=\"text\" class=\"validate\" formControlName='username'> \n  </div>\n\n  <div formGroupName='passwordGroup'>\n  <div class=\"row\">\n    <label>Password</label>\n    <input id = \"password\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='password'>\n  </div>\n\n    <div class = \"row\">\n      <label>Confirm password</label>\n      <input id= \"confirmPassword\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='confirmPassword'>\n    </div>\n</div>\n    <div class = \"row\">\n    <button type='submit' class=\"waves-effect waves-light btn\">Register</button>\n  </div>\n    </form>\n</div>\n\n"
+module.exports = "<div class=\"container\">\n  <form [formGroup]='user' (ngSubmit)='onSubmit()' class=\"card-content\">\n    <div class=\"row\">\n      <h3>Register</h3>\n    </div>\n\n    <div class=\"row\">\n      <label>Username</label>\n      <input id=\"username\" class=\"input col s2\" type=\"text\" class=\"validate\" formControlName='username'>\n      <div class='error' *ngIf='user.get(\"username\").errors?.userAlreadyExists && user.get(\"username\").touched'>\n        This username already exists!\n      </div>\n    </div>\n\n    <div formGroupName='passwordGroup'>\n      <div class=\"row\">\n        <label>Password</label>\n        <input id=\"password\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='password'>\n        <div class='error' *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>\n          Wachtwoord is te kort, minstens {{passwordControl.errors?.passwordTooShort.requiredLength}} letters\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <label>Confirm password</label>\n        <input id=\"confirmPassword\" class=\"input col s2\" type=\"password\" class=\"validate\" formControlName='confirmPassword'>\n        <div class='error' *ngIf=' user.get(\"passwordGroup\").errors?.passwordsDiffer && user.get(\"passwordGroup\").get(\"confirmPassword\").touched  && user.get(\"passwordGroup\").get(\"password\").touched'>\n          Wachtwoorden moeten hetzelfde zijn\n        </div>\n      </div>\n\n        <div class=\"row\">\n          <button type='submit' class=\"waves-effect waves-light btn\">Register</button>\n        </div>\n    </div>\n\n  </form>\n\n  </div>"
 
 /***/ }),
 

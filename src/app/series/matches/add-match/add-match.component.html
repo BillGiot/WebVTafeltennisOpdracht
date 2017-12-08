@@ -1,0 +1,39 @@
+<div id= "addmatch" class="row" >
+ <h5>Add a new match to {{serie?.name}}</h5>
+<form [formGroup]='match' (ngSubmit)='onSubmit()'>
+    <div class="date">
+        <h6 >Choose your date:</h6>
+        <input id="datepicker" class= "center-align" type="date" placeholder="Choose a date" formControlName="date">
+        <div id="error" *ngIf= 'match.get("date").errors?.required && match.get("date").touched'>Please choose a date</div>
+    </div>
+
+    <div class="row">
+        <label>Player A: </label>
+        <input class= " center-align" type="text" formControlName="playerA">
+        <div id="error" *ngIf= 'match.get("playerA").errors?.required && match.get("playerA").touched'>Please fill in a name</div>
+    </div>
+
+    <div class="row">
+        <label>Player B:</label>
+        <input class=" center-align" type="text" formControlName="playerB">
+        <div id="error" *ngIf= 'match.get("playerB").errors?.required && match.get("playerB").touched'>Please fill in a name</div>
+    </div>
+
+    <div class="row">
+         <label>Sets player A:</label>
+         <input class= " center-align"  type="number"  min="0" max="4" formControlName="setsPlayerA">
+         <div id="error" *ngIf= 'match.get("setsPlayerA").errors?.required && match.get("setsPlayerA").touched'>Please fill in a score</div>
+    </div>
+
+    <div class="row">
+        <label>Sets Player B:</label>
+        <input class="center-align" type="number" min="0" max="4" formControlName="setsPlayerB">
+        <div id="error" *ngIf= 'match.get("setsPlayerB").errors?.required && match.get("setsPlayerB").touched'>Please fill in a score</div>
+    </div>
+
+    <div class="row" *ngIf='errorMsg' id= "error" >{{errorMsg}}</div>
+
+<button  [disabled]="!match.valid" class="waves-effect waves-light btn" type= "submit">Add your match</button>
+</form>
+
+</div>

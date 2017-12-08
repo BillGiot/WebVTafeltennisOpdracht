@@ -11,7 +11,7 @@
         <div *ngIf='errorMsg' id="error">{{errorMsg}}</div>
         <div id="error" *ngIf= 'post.get("text").errors?.minlength && post.get("text").touched'>Minimum length of your message is 20 characters</div>
 
-        <button [disabled]="!post.valid" class="btn waves-effect waves-light right" type="submit" name="action">Submit
+        <button [disabled]="!post.valid" class="btn waves-effect waves-light right" type="submit">Submit
           <i class="material-icons right">send</i>
         </button>
 

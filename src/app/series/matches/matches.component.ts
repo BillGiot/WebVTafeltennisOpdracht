@@ -11,11 +11,20 @@ import { Serie } from '../serie.model';
 })
 export class MatchesComponent implements OnInit {
   @Input() public serie: Serie;
+  private _matches = [];
 
   constructor(private route: ActivatedRoute, private dataService: SerieService) {}
 
   ngOnInit() {
   }
 
+  get matches(){
+    return this.serie.matches;
+  }
+
+  addMatch(match) {
+    this.serie.matches.push(match);
+
+  }
 
 }

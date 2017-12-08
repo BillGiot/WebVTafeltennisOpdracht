@@ -24,8 +24,13 @@ export class SeriesComponent implements OnInit {
     this.serie = serie;
   }
 
+  
   get series() {
     return this._series;
+  }
+
+  addSerie(serie) {
+    this._series.push(serie);
   }
 
 }

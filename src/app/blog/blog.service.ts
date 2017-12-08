@@ -23,8 +23,6 @@ export class BlogService {
       return this.http.post(`${this._appUrl}blog`, rec,
       { headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) })
         .map(res => res.json()).map(item => Post.fromJSON(item));
-
-
     }
 
     removePost(rec): Observable<Post> {

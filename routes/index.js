@@ -53,7 +53,7 @@ router.put('/API/news/:newsitem', auth, function (req, res, next) {
 router.delete('/API/news/:newsitem', auth, function (req, res, next) {
   req.newsitem.remove(function (err) {
     if (err) { return next(err); }
-    res.json("removed newsitem");
+    res.json(req.newsitem);
   });
 });
 
@@ -67,11 +67,11 @@ router.get('/API/series/', function(req, res, next){
 });
 
 router.post('/API/series/' , auth, function (req, res) {
-  let serie = new Serie(req.body);
-  serie.save(function (err, post) {
-    if (err) { return next(err); }
-    res.json(serie);
-  });
+  let serie = new Serie({name: req.body.name});
+  serie.save(function(err, serie) {
+          if (err){ return next(err); }
+          res.json(serie);
+      });
 });
 
 router.param('serie', function (req, res, next, id) {
@@ -91,17 +91,42 @@ router.get('/API/series/:serie', function (req, res) {
   });
 });
 
-router.post('/API/series/:serie/matches', function (req, res) {
-  let match = new Match(req.body);
-      match.save(function(err, match) {
-        if (err) return next(err);
-        req.serie.matches.push(match);
-        req.serie.save(function(err, rec) {
-          if (err) return next(err);
-          res.json(match);
-        })
-      });
+router.delete('/API/series/:serie', auth, function (req, res, next) {
+  req.serie.remove(function (err) {
+    if (err) { return next(err); }
+    res.json(req.serie);
+  });
 });
+
+router.post('/API/series/:serie/matches', function (req, res) {
+ 
+  if((req.body.setsPlayerA == req.body.setsPlayerB) || (req.body.setsPlayerA<4  && req.body.setsPlayerB < 4 )){
+    return res.status(400).json({message: 'Please give a valid score'});
+  }
+
+  let newMatch = new Match(req.body);
+  
+    newMatch.save(function(err, match) {
+      if (err) return next(err);
+  
+      req.serie.matches.push(match);
+      req.serie.save(function(err, match) {
+        if (err) return next(err);
+        res.json(match);
+      })
+    });
+});
+
+
+
+
+/*router.delete('/API/series/:serie/matches/:match', auth, function (req, res, next) {
+  req.post.remove(function (err) {
+    if (err) { return next(err); }
+    res.json(req.post);
+  });
+});*/
+
 
 //blog
 router.get('/API/blog/', auth ,function (req, res, next) {

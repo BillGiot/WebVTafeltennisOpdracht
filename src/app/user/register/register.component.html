@@ -1,28 +1,39 @@
-<div class = "container">
+<div class="container">
   <form [formGroup]='user' (ngSubmit)='onSubmit()' class="card-content">
-<div class ="row">
-  <h3>Register</h3>
-</div>
-
-<div class = "row">
-   <label>Username</label>
-    <input id="username" class="input col s2" type="text" class="validate" formControlName='username'> 
-  </div>
-
-  <div formGroupName='passwordGroup'>
-  <div class="row">
-    <label>Password</label>
-    <input id = "password" class="input col s2" type="password" class="validate" formControlName='password'>
-  </div>
-
-    <div class = "row">
-      <label>Confirm password</label>
-      <input id= "confirmPassword" class="input col s2" type="password" class="validate" formControlName='confirmPassword'>
+    <div class="row">
+      <h3>Register</h3>
     </div>
-</div>
-    <div class = "row">
-    <button type='submit' class="waves-effect waves-light btn">Register</button>
-  </div>
-    </form>
-</div>
 
+    <div class="row">
+      <label>Username</label>
+      <input id="username" class="input col s2" type="text" class="validate" formControlName='username'>
+      <div class='error' *ngIf='user.get("username").errors?.userAlreadyExists && user.get("username").touched'>
+        This username already exists!
+      </div>
+    </div>
+
+    <div formGroupName='passwordGroup'>
+      <div class="row">
+        <label>Password</label>
+        <input id="password" class="input col s2" type="password" class="validate" formControlName='password'>
+        <div class='error' *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>
+          Wachtwoord is te kort, minstens {{passwordControl.errors?.passwordTooShort.requiredLength}} letters
+        </div>
+      </div>
+
+      <div class="row">
+        <label>Confirm password</label>
+        <input id="confirmPassword" class="input col s2" type="password" class="validate" formControlName='confirmPassword'>
+        <div class='error' *ngIf=' user.get("passwordGroup").errors?.passwordsDiffer && user.get("passwordGroup").get("confirmPassword").touched  && user.get("passwordGroup").get("password").touched'>
+          Wachtwoorden moeten hetzelfde zijn
+        </div>
+      </div>
+
+        <div class="row">
+          <button type='submit' class="waves-effect waves-light btn">Register</button>
+        </div>
+    </div>
+
+  </form>
+
+  </div>

@@ -10,7 +10,7 @@ export class Serie {
         rec._id = json._id;
         return rec;
     }
-    constructor(name: String, matches: Match[]) {
+    constructor(name: String, matches?: Match[]) {
        this._name = name;
        this._matches = matches;
     }

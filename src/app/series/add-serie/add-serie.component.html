@@ -1,0 +1,9 @@
+<div class="row">
+  <h6>Add Serie</h6>
+  <form [formGroup]='serie' (ngSubmit)='onSubmit()'>
+      <label for="name">Serie name:</label>
+      <input id="name" type="text" formControlName="name">
+      <div id="error" *ngIf= 'serie.get("name").errors?.required && serie.get("name").touched'>Please choose a name</div>
+      <button [disabled]="!serie.valid" type="submit" class="btn waves-effect waves-light"><i class="material-icons">add</i></button>
+  </form>
+</div>

@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SerieService } from './series/serie.service';
 import { BlogService } from './blog/blog.service';
-import { AddMatchComponent } from './series/add-match/add-match.component';
+
 
 
 
@@ -19,7 +19,6 @@ import { AddMatchComponent } from './series/add-match/add-match.component';
     AppComponent,
     MenuComponent,
     FooterComponent,
-    AddMatchComponent
   ],
   imports: [
     MaterializeModule,
