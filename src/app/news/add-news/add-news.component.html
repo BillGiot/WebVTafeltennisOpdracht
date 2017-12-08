@@ -3,29 +3,26 @@
   <div id="addNews" class="row">
     <form  [formGroup]='newsItem' (ngSubmit)='onSubmit()'>
       <div class="row">
-     <label  for="title">Title:</label>
-      <input   placeholder= "What's your title?" id="title" type="text" formControlName="title">
+      <input  placeholder= "What's your title?" class="active" id="title" type="text" formControlName="title">
+      <label  for="title">Title:</label>
       <div id="error" *ngIf= 'newsItem.get("title").errors?.required && newsItem.get("title").touched'>
         Please fill in a title...
       </div>
     </div>
 
       <div class="row">
+      <textarea placeholder= "Give your short description..." class="active" id="description" type="text" formControlName="description"></textarea>
       <label for="description">Description:</label>
-      <textarea   placeholder= "Give your short description..." id="description" type="text" formControlName="description"></textarea>
       <div id="error" *ngIf=' newsItem.get("description").errors?.required && newsItem.get("description").touched'>
         Please fill in the description...
       </div>
     </div>
 
       <div class="row">
-     <label for="text">Text:</label>
-      <textarea   placeholder= "Write your article..." id="text" type="text" formControlName="text"></textarea>
-      <div id="error" *ngIf=' newsItem.get("text").errors?.required && newsItem.get("text").touched'>
-          Please fill in the text...
-        </div>
+      <textarea  placeholder= "Write your article..." class="active" id="text" type="text" formControlName="text"></textarea>
+      <label for="text">Text:</label>
       <div id="error" *ngIf=' newsItem.get("text").errors?.minlength && newsItem.get("text").touched'>
-        The text must be at least 20 characters 
+       Please fill in the text...
       </div>
     </div>
 
